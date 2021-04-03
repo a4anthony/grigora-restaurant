@@ -1,4 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import "@/assets/css/styles.css";
+import "@/plugins/font-awesome-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import InlineSvg from "vue-inline-svgs";
 
-createApp(App).mount('#app')
+createApp(App)
+  .component("fa", FontAwesomeIcon)
+  .component("InlineSvg", InlineSvg)
+  .mount("#app");
