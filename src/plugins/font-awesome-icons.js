@@ -6,5 +6,6 @@ import {
   faSearch,
   faBars
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faMapMarkerAlt, faChevronDown, faSearch, faBars);
+library.add(faMapMarkerAlt, faChevronDown, faSearch, faBars, faStar);
