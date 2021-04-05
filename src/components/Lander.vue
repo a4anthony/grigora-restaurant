@@ -144,8 +144,8 @@ ul.dots-after li:last-child:after {
 .logo-wrap {
   background-color: #fff;
   border-radius: 50%;
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   text-align: center;
 }
 .lander {

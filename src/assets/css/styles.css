@@ -206,7 +206,7 @@ button:hover {
 .dropdown.stores .dropdown-btn {
   color: #e39419;
   background-color: transparent;
-  padding: 0 2rem;
+  padding: 0 4rem;
   text-align: center;
 }
 .dropdown.stores .dropdown-buttons {

@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown" :id="id" :class="classes">
-    <div class="d-flex dropdown-buttons items-center">
-      <button @click="show = !show" class=" w-100 dropdown-btn items-center">
+    <div class="d-flex dropdown-buttons items-center" @click="show = !show">
+      <button class=" w-100 dropdown-btn items-center">
         <span v-if="label" class="">
           {{ label }}
         </span>
@@ -9,7 +9,7 @@
           {{ selectedOption.category_name }}
         </span>
       </button>
-      <span @click="show = !show" class="toggle-icon d-flex items-center">
+      <span class="toggle-icon d-flex items-center">
         <fa :icon="['fas', 'chevron-down']" />
       </span>
     </div>
@@ -82,6 +82,9 @@ export default {
 <style scoped>
 .dropdown {
   position: relative;
+}
+.dropdown:hover {
+  cursor: pointer;
 }
 .dropdown-content {
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%),
