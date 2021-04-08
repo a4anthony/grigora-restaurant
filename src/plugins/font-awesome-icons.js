@@ -4,8 +4,20 @@ import {
   faMapMarkerAlt,
   faChevronDown,
   faSearch,
-  faBars
+  faBars,
+  faArrowRight,
+  faArrowLeft,
+  faStar as faSolidStar
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faMapMarkerAlt, faChevronDown, faSearch, faBars, faStar);
+library.add(
+  faMapMarkerAlt,
+  faChevronDown,
+  faSearch,
+  faBars,
+  faStar,
+  faArrowRight,
+  faArrowLeft,
+  faSolidStar
+);

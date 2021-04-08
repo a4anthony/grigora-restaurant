@@ -802,5 +802,57 @@ export const appData = () => ({
       ]
     }
   ],
-  total_cart_item: 1
+  total_cart_item: 1,
+  items: {
+    61: [
+      {
+        name: "Gora Chicken bowl",
+        description: "A bucket containing 18 pieces of Fried chicken",
+        image: "https://grigora.net/images/items/1604034821.jpg",
+        price: "6500.00",
+        status: "0",
+        avg_ratings: "0.0"
+      }
+    ],
+    60: [
+      {
+        name: "Chocolate Waffles",
+        description: "Four layers of chocolate baked waffles. Gluten free.1",
+        image: "https://grigora.net/images/items/1603884625.jpeg",
+        price: "25.00",
+        status: "1",
+        avg_ratings: 5
+      }
+    ],
+    94: [
+      {
+        name: "Red Wine",
+        description: "Low alcohol red wine",
+        price: "4000.00",
+        image: "https://grigora.net/images/items/1604004035.jpeg",
+        status: "0",
+        avg_ratings: "0.0"
+      },
+      {
+        name: "Hennessy",
+        description: "40% alcohol V.S.O.P - 70cl",
+        price: "14,000.00",
+        image: "https://grigora.net/images/items/1604007522.jpeg",
+        status: "0",
+        avg_ratings: "0.0"
+      }
+    ],
+    64: [
+      {
+        name: "Gora Treat",
+        description:
+          "A Combo pack containing:\n2 Burgers, 1 Fries pack or\n2 Fries pack, 1 burger; \nChicken wings,\n1 Drink",
+        image:
+          "https://gnet1.s3.us-east-2.amazonaws.com/1612356757_1612356756.5792642.jpeg",
+        price: "200.00",
+        status: "0",
+        avg_ratings: "0.0"
+      }
+    ]
+  }
 });

@@ -46,7 +46,7 @@
             </span>
           </button>
         </div>
-        <div class="mr-1 ">
+        <div class="mr-1 auth-links ">
           <a href="#" class="d-flex sign-in-sign-up-link items-center">
             <span class="mr-half">
               <inline-svg
@@ -97,6 +97,10 @@ export default {
 <style scoped>
 nav {
   padding: 0.1rem 3rem;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 100;
 }
 /* (1366x768) WXGA Display */
 
@@ -124,6 +128,10 @@ nav {
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
+  .search-form,
+  .auth-links {
+    display: none;
+  }
 }
 
 /* Large Mobile :480px. */

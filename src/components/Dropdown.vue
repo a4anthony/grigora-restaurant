@@ -6,7 +6,7 @@
           {{ label }}
         </span>
         <span v-else class="" style="display: inline-block; padding: 10px 30px">
-          {{ selectedOption.category_name }}
+          {{ activeMenu.category_name }}
         </span>
       </button>
       <span class="toggle-icon d-flex items-center">
@@ -18,7 +18,7 @@
       <button
         v-for="(option, index) in options"
         class="d-block w-100 text-left"
-        @click="selectedOption = option"
+        @click="setActiveMenu(option)"
         :key="`dropdownOption${index}`"
       >
         <slot name="option" :item="option"> </slot>
@@ -48,18 +48,32 @@ export default {
   computed: {
     id() {
       return `dropdown__${uniqueId()}`;
+    },
+    activeMenu() {
+      return this.$store.state.activeMenu;
     }
   },
   data() {
     return {
-      show: true,
+      show: false,
       selectedOption: ""
     };
   },
   mounted() {
     this.selectedOption = this.options[0];
+    if (!this.label) {
+      this.$store.commit("setActiveMenu", this.options[0]);
+    }
   },
   methods: {
+    setActiveMenu(option) {
+      if (!this.label) {
+        this.$store.commit("setActiveMenu", option);
+      } else {
+        this.selectedOption = option;
+      }
+      this.show = false;
+    },
     clear(e) {
       const el = document.getElementById(this.id);
       const { target } = e;
@@ -97,6 +111,7 @@ export default {
   top: 45px;
   left: 0;
   right: 0;
+  z-index: 10;
   /*padding: 20px;*/
 }
 .dropdown-content button {

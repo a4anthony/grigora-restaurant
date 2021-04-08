@@ -10,11 +10,13 @@ html {
 body {
   margin: 0;
   font-family: "Nunito", sans-serif !important;
+  min-height: 200vh;
 }
 button,
 input,
 select {
   outline: none !important;
+  font-family: "Nunito", sans-serif !important;
 }
 .d-flex {
   display: flex;
@@ -160,6 +162,9 @@ button:hover {
 .w-25 {
   width: 25%;
 }
+.w-50 {
+  width: 50%;
+}
 
 .menu-toggle {
   padding: 0 1.5rem;
@@ -240,4 +245,43 @@ button:hover {
 }
 .dropdown.stores .dropdown-content {
   top: 45px;
+}
+
+.cart-tab {
+  background-color: #fbfbfc;
+  -webkit-box-shadow: -2px 4px 5px 0 rgb(59 59 59 / 20%);
+  -moz-box-shadow: -2px 4px 5px 0 rgb(59 59 59 / 20%);
+  box-shadow: -2px 4px 5px 0 rgb(59 59 59 / 20%);
+  /*width: 20%;*/
+  padding: 3rem;
+}
+.cart-info svg path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.section-caption {
+  margin-bottom: 1.5rem;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.text-wrap {
+  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*/
+  /*overflow: hidden;*/
+  overflow: hidden;
+  white-space: nowrap;
+  /*color: black !important;*/
+  text-overflow: ellipsis;
+  line-height: 1.5rem;
+  width: auto;
+  /*font-size: 0.85rem;*/
 }

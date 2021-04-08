@@ -1,6 +1,6 @@
 <template>
   <div
-    class="d-flex lander "
+    class="d-flex lander flex-wrap"
     :style="{
       background:
         'linear-gradient(147deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(' +
@@ -44,7 +44,7 @@
           </li>
         </ul>
       </div>
-      <div class="d-flex justify-between store-details">
+      <div class="d-flex flex-wrap justify-between store-details">
         <div>
           <div class="mb-1">
             <ul class="d-flex">
@@ -149,7 +149,7 @@ ul.dots-after li:last-child:after {
   text-align: center;
 }
 .lander {
-  padding: 3rem 3rem;
+  padding: 2.5rem 3rem;
 }
 .store-details {
   border-top: 1px solid hsla(0, 0%, 100%, 0.4);
