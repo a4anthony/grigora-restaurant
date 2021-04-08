@@ -12,10 +12,11 @@
           <item-cards v-for="tab in activeMenu.data" :key="tab" :item="tab" />
         </div>
       </div>
-      <div style="width: 28%">
+      <div style="width: 28%" class="side-content">
         <cart />
       </div>
     </div>
+    <footer-bar />
   </div>
 </template>
 
@@ -29,9 +30,11 @@ import Cart from "@/components/Cart";
 // import ItemCards from "@/components/ItemCards";
 import FeaturedItems from "@/components/FeaturedItems";
 import ItemCards from "@/components/ItemCards";
+import FooterBar from "@/components/layout/FooterBar";
 export default {
   name: "App",
   components: {
+    FooterBar,
     ItemCards,
     FeaturedItems,
     // ItemCards,
@@ -81,6 +84,9 @@ export default {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .side-content {
+    display: none;
+  }
 }
 
 /* small mobile :576px. */

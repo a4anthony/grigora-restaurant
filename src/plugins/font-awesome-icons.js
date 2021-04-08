@@ -10,6 +10,11 @@ import {
   faStar as faSolidStar
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter
+} from "@fortawesome/free-brands-svg-icons";
 
 library.add(
   faMapMarkerAlt,
@@ -19,5 +24,8 @@ library.add(
   faStar,
   faArrowRight,
   faArrowLeft,
-  faSolidStar
+  faSolidStar,
+  faFacebook,
+  faInstagram,
+  faTwitter
 );
