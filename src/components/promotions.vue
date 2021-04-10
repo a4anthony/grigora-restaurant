@@ -1,5 +1,5 @@
 <template>
-  <div class="promo">
+  <div class="promo" id="promotions">
     <div class="promo-caption">
       <span>Ongoing </span><span class="text-yellow">Promos</span>
     </div>

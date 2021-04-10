@@ -2,20 +2,19 @@
   <div>
     <navigation-bar />
     <lander />
-    <div class="d-flex">
-      <div class="flex-grow main-content" style="width: 72%;">
-        <menu-categories-nav />
-
+    <page-nav />
+    <body-container>
+      <template v-slot:main>
         <div class="main-container">
           <promotions />
           <featured-items />
           <item-cards v-for="tab in activeMenu.data" :key="tab" :item="tab" />
         </div>
-      </div>
-      <div style="width: 28%" class="side-content">
-        <cart />
-      </div>
-    </div>
+      </template>
+      <template v-slot:side>
+        <cart :only-header="false" />
+      </template>
+    </body-container>
     <footer-bar />
   </div>
 </template>
@@ -24,23 +23,23 @@
 import NavigationBar from "@/components/layout/NavigationBar";
 import Lander from "@/components/Lander";
 import { appData } from "@/data";
-import MenuCategoriesNav from "@/components/MenuCategoriesNav";
 import Promotions from "@/components/promotions";
 import Cart from "@/components/Cart";
-// import ItemCards from "@/components/ItemCards";
 import FeaturedItems from "@/components/FeaturedItems";
 import ItemCards from "@/components/ItemCards";
 import FooterBar from "@/components/layout/FooterBar";
+import PageNav from "@/components/PageNav";
+import BodyContainer from "@/components/BodyContainer";
 export default {
   name: "App",
   components: {
+    BodyContainer,
+    PageNav,
     FooterBar,
     ItemCards,
     FeaturedItems,
-    // ItemCards,
     Cart,
     Promotions,
-    MenuCategoriesNav,
     Lander,
     NavigationBar
   },
@@ -70,6 +69,9 @@ export default {
 .main-container {
   padding: 5px 85px 40px 85px;
 }
+.side-content {
+  /*background-color: #fbfbfc;*/
+}
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
 }
 
@@ -97,9 +99,6 @@ export default {
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
-  .main-content {
-    width: 100% !important;
-  }
   .main-container {
     padding: 5px 1rem 40px 1rem;
   }

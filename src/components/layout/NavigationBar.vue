@@ -1,71 +1,32 @@
 <template>
-  <nav>
-    <div class="d-flex justify-between">
-      <div class="d-flex items-center flex-grow w-25">
-        <div class="mr-1">
-          <logo />
-        </div>
-        <div class="mr-1">
-          <button class="nav-location-search-btn d-flex">
-            <span class="mr-1">
-              <inline-svg
-                :size="15"
-                :path="
-                  require(`!html-loader!../../assets/svgs/placeholder.svg`)
-                "
-              />
-            </span>
-            Wuse 2, Abuja
-            <span class="ml-1">
-              <fa :icon="['fas', 'chevron-down']" />
-            </span>
-          </button>
-        </div>
+  <nav class="navbar d-flex justify-between items-center">
+    <!--left tab-->
+    <div class="d-flex items-center w-25 nav-left-tab">
+      <!--logo-->
+      <div class="mr-1">
+        <logo />
       </div>
-      <div class="d-flex items-center flex-grow">
-        <div
-          class="mr-1 search-form flex-grow"
-          :class="activeInput && 'active'"
-        >
-          <label
-            for="query"
-            :class="[activeLabel && 'active', activeInput && 'set-color']"
-            >Search for vendors and cuisines</label
-          >
-          <input
-            id="query"
-            type="text"
-            class="w-100"
-            v-model="searchQuery"
-            @focusin="searchFocus"
-            @focusout="searchFocus"
-          />
-          <button class="search-btn">
-            <span>
-              <fa :icon="['fas', 'search']" />
-            </span>
-          </button>
-        </div>
-        <div class="mr-1 auth-links ">
-          <a href="#" class="d-flex sign-in-sign-up-link items-center">
-            <span class="mr-half">
-              <inline-svg
-                :size="15"
-                :path="
-                  require(`!html-loader!../../assets/svgs/user-profile.svg`)
-                "
-              />
-            </span>
-            Sign In/Sign Up
-          </a>
-        </div>
-        <div>
-          <button class="menu-toggle d-flex items-center">
-            <span>
-              <fa :icon="['fas', 'bars']" />
-            </span>
-          </button>
-        </div>
+      <!--location dropdown selector-->
+      <div class="mr-1 nav-location-selector flex-grow">
+        <location-selector />
+      </div>
+      <div class="nav-navbar-toggle-sm">
+        <navbar-toggle />
+      </div>
+    </div>
+    <!--right tab-->
+    <div class="d-flex items-center flex-grow nav-right-tab">
+      <!--search input-->
+      <div class="mr-1 flex-grow nav-search-input">
+        <search-input />
+      </div>
+      <!--auth link-->
+      <div class="mr-1 nav-auth-link">
+        <auth-link />
+      </div>
+      <!--navbar toggle-->
+      <div class="nav-navbar-toggle">
+        <navbar-toggle />
       </div>
     </div>
   </nav>
@@ -73,35 +34,44 @@
 
 <script>
 import Logo from "@/Logo";
+import LocationSelector from "@/components/shared/LocationSelector";
+import SearchInput from "@/components/shared/SearchInput";
+import AuthLink from "@/components/shared/AuthLink";
+import NavbarToggle from "@/components/shared/NavbarToggle";
 export default {
   name: "NavigationBar",
-  components: { Logo },
-  data() {
-    return {
-      activeLabel: false,
-      activeInput: false,
-      searchQuery: ""
-    };
-  },
-  methods: {
-    searchFocus() {
-      this.activeInput = !this.activeInput;
-      if (!this.searchQuery) {
-        this.activeLabel = !this.activeLabel;
-      }
-    }
-  }
+  components: { NavbarToggle, AuthLink, SearchInput, LocationSelector, Logo }
 };
 </script>
 
 <style scoped>
-nav {
-  padding: 0.1rem 3rem;
+.navbar {
+  padding: 0 3rem;
   position: sticky;
   top: 0;
   background-color: #fff;
   z-index: 100;
+  height: 65px;
+  -webkit-box-shadow: 0 2px 10px 0px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 0 2px 10px 0px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 10px 0px rgb(0 0 0 / 10%);
 }
+.nav-left-tab {
+  width: 40%;
+}
+.nav-location-selector {
+  margin-right: 25%;
+}
+.nav-navbar-toggle-sm {
+  display: none;
+}
+.nav-auth-link {
+  width: 30%;
+}
+.nav-navbar-toggle {
+  width: 15%;
+}
+
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
@@ -118,6 +88,18 @@ nav {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .nav-search-input {
+    display: none;
+  }
+  .nav-left-tab {
+    width: 60%;
+  }
+  .nav-auth-link {
+    width: 65%;
+  }
+  .nav-right-tab {
+    justify-content: flex-end;
+  }
 }
 
 /* small mobile :576px. */
@@ -129,8 +111,29 @@ nav {
 
 @media (max-width: 575px) {
   .search-form,
-  .auth-links {
+  .auth-links,
+  .nav-auth-link {
     display: none;
+  }
+  .navbar {
+    padding: 0 1rem;
+  }
+  .nav-navbar-toggle {
+    display: none;
+  }
+  .nav-left-tab {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-right-tab {
+    display: none;
+  }
+  .nav-location-selector {
+    margin-right: 1rem;
+  }
+  .nav-navbar-toggle-sm {
+    width: 20%;
+    display: block;
   }
 }
 

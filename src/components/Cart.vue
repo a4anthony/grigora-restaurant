@@ -1,6 +1,6 @@
 <template>
-  <div style="background-color: #fbfbfc">
-    <div class="cart-info d-flex items-center">
+  <div class="cart">
+    <div v-if="onlyHeader" class="cart-info d-flex items-center">
       <span class="mr-half">
         <inline-svg
           :path="require(`!html-loader!../assets/svgs/cart.svg`)"
@@ -9,7 +9,7 @@
       </span>
       Cart({{ data.total_cart_item }})
     </div>
-    <div class="cart-tab  text-center">
+    <div v-if="!onlyHeader" class="cart-tab  text-center">
       <img
         class="d-block"
         src="../assets/images/empty-cart.png"
@@ -28,6 +28,12 @@ import { appData } from "@/data";
 
 export default {
   name: "Cart",
+  props: {
+    onlyHeader: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     data() {
       return appData();
@@ -37,12 +43,16 @@ export default {
 </script>
 
 <style scoped>
+.cart {
+  background-color: #fbfbfc;
+  display: flex;
+}
 .cart-text {
   color: #999;
   font-size: 0.9rem;
 }
 .cart-info {
-  /*width: 20%;*/
+  width: 100%;
   height: 41px;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -51,6 +61,14 @@ export default {
   background-color: #fbfbfc;
   font-weight: 700;
   color: #333;
+}
+.cart-tab {
+  background-color: #fbfbfc;
+  -webkit-box-shadow: -2px 4px 5px 0 rgb(59 59 59 / 20%);
+  -moz-box-shadow: -2px 4px 5px 0 rgb(59 59 59 / 20%);
+  box-shadow: -2px 4px 5px 0 rgb(59 59 59 / 20%);
+  width: 100%;
+  padding: 3rem;
 }
 /* (1366x768) WXGA Display */
 

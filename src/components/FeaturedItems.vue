@@ -1,5 +1,5 @@
 <template>
-  <div class="featured-items">
+  <div class="featured-items" id="featuredItems">
     <section-header
       :title="`<span class='text-yellow'>Featured </span><span>Items</span>`"
       caption="Vendors featured items"
