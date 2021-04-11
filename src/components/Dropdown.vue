@@ -21,7 +21,9 @@
         @click="setActiveMenu(option)"
         :key="`dropdownOption${index}`"
       >
-        <slot name="option" :item="option"> </slot>
+        <span class="d-block">
+          <slot name="option" :item="option"> </slot>
+        </span>
       </button>
     </div>
   </div>
@@ -55,7 +57,7 @@ export default {
   },
   data() {
     return {
-      show: false,
+      show: true,
       selectedOption: ""
     };
   },
@@ -94,6 +96,12 @@ export default {
 </script>
 
 <style scoped>
+.instruction {
+  text-align: center;
+  color: #e39419;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
 .dropdown {
   position: relative;
 }
@@ -115,7 +123,9 @@ export default {
   /*padding: 20px;*/
 }
 .dropdown-content button {
-  padding: 1.2rem 1rem;
+  min-height: 48px;
+  padding: 8px 16px;
+  transition: color 0.3s, background-color 0.3s;
 }
 .dropdown-content button:first-child {
   border-radius: 5px 5px 0 0;
@@ -145,6 +155,13 @@ export default {
 .toggle-icon:hover {
   cursor: pointer;
 }
+
+.dropdown.stores .dropdown-btn {
+  color: #e39419;
+  background-color: transparent;
+  padding: 0 4rem;
+  text-align: center;
+}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
@@ -161,6 +178,18 @@ export default {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .dropdown.stores {
+    min-width: 30%;
+    margin: 0 auto;
+  }
+  .dropdown.stores .dropdown-btn {
+    padding: 0 10px;
+  }
+  .dropdown-content {
+    left: unset;
+    right: 0;
+    width: 265px;
+  }
 }
 
 /* small mobile :576px. */
@@ -171,6 +200,18 @@ export default {
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
+  .dropdown.stores {
+    min-width: 70%;
+    margin: 0 auto;
+  }
+  .dropdown.stores .dropdown-btn {
+    padding: 0 10px;
+  }
+  .dropdown-content {
+    left: unset;
+    right: 0;
+    width: 265px;
+  }
 }
 
 /* Large Mobile :480px. */

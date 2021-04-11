@@ -10,15 +10,21 @@
       backgroundSize: 'cover'
     }"
   >
+    <!--logo-->
     <div class="logo-wrap d-flex items-center justify-center mr-1">
       <logo :size="80" />
     </div>
     <div class="flex-grow text-white">
-      <h1 class="m-0">
+      <!--restaurant name-->
+      <h1 class="m-0 restaurant-name">
         {{ data.restaurant_name }}
       </h1>
-      <span class="d-inline-block mb-1">{{ data.cuisines }}</span>
-      <div class="mb-1">
+      <!--restaurant cuisines-->
+      <span class="d-block mb-1 restaurant-cuisines">
+        Bakery & Cakes, Fries & Grills, Fast Foods, Alcohol
+      </span>
+      <!--reviews and distance-->
+      <div class="mb-half centered-sm centered-md">
         <ul class="h-list dots-after">
           <li>
             <button class="reviews-btn">
@@ -28,7 +34,7 @@
           <li>1.58 KM Away</li>
         </ul>
       </div>
-      <div class="mb-1">
+      <div class="mb-half centered-sm centered-md">
         <ul class="d-flex dots-after">
           <li class="d-flex items-center">
             <span class="store-status d-block open">open</span>
@@ -37,7 +43,7 @@
             <button class="more-info-btn d-flex items-center">
               <span class="mr-half">
                 <inline-svg
-                  :size="25"
+                  :size="21"
                   :path="require(`!html-loader!../assets/svgs/exclamation.svg`)"
                 /> </span
               >more info
@@ -45,70 +51,24 @@
           </li>
         </ul>
       </div>
-      <div class="d-flex flex-wrap justify-between store-details">
+      <!--line separator-->
+      <div class="line-separator"></div>
+      <!--store details and options-->
+      <div
+        class="d-flex justify-between flex-wrap centered-sm centered-md store-details-options"
+      >
+        <!--store details-->
+        <div class="mb-1 centered-sm centered-md lander-store-details">
+          <store-details />
+        </div>
+        <!--lander options-->
         <div>
-          <div class="mb-1">
-            <ul class="d-flex">
-              <li class="mr-1">
-                <span class="d-block text-yellow store-details-info"
-                  >Min. Order</span
-                >
-                <span class="store-details-info-value text-white">₦ 200</span>
-              </li>
-              <li class="mr-1">
-                <span class="d-block text-yellow store-details-info"
-                  >Prep. Time</span
-                >
-                <span class="store-details-info-value text-white"
-                  >{{ data.estimated_preparing_time }} mins</span
-                >
-              </li>
-              <li>
-                <span class="d-block text-yellow store-details-info"
-                  >Delivery Fee</span
-                >
-                <span class="store-details-info-value text-white"
-                  >₦ {{ data.delivery_fee }}</span
-                >
-              </li>
-            </ul>
-          </div>
-          <span class="d-block text-yellow text-center">Chose a Menu</span>
-          <dropdown :options="data.all_data" classes="stores">
-            <template v-slot:option="{ item }">
-              <span class="mr-half">{{ item.category_name }}</span>
-              <span>[{{ item.start_time }} - {{ item.end_time }}]</span>
-            </template>
-          </dropdown>
+          <lander-options />
         </div>
-        <div class="mb-1">
-          <ul class="d-flex">
-            <li class="mr-half">
-              <dropdown
-                label="Delivery"
-                classes="delivery"
-                :options="['Delivery', 'Pick up order']"
-              >
-                <template v-slot:option="{ item }">
-                  <span>{{ item }}</span>
-                </template>
-              </dropdown>
-            </li>
-            <li class="mr-half">
-              <button class="transparent-btn d-flex items-center">
-                <span class="mr-half">
-                  <inline-svg
-                    :size="20"
-                    :path="require(`!html-loader!../assets/svgs/users.svg`)"
-                  /> </span
-                >Start Group Order
-              </button>
-            </li>
-            <li>
-              <button class="transparent-btn">Book a table</button>
-            </li>
-          </ul>
-        </div>
+      </div>
+      <!--menu selector-->
+      <div>
+        <menu-selector />
       </div>
     </div>
   </div>
@@ -117,10 +77,17 @@
 <script>
 import Logo from "@/Logo";
 import { appData } from "@/data";
-import Dropdown from "@/components/Dropdown";
+import LanderOptions from "@/components/shared/LanderOptions";
+import StoreDetails from "@/components/shared/StoreDetails";
+import MenuSelector from "@/components/shared/MenuSelector";
 export default {
   name: "Lander",
-  components: { Dropdown, Logo },
+  components: {
+    MenuSelector,
+    StoreDetails,
+    LanderOptions,
+    Logo
+  },
   computed: {
     data() {
       return appData();
@@ -130,6 +97,16 @@ export default {
 </script>
 
 <style scoped>
+.line-separator {
+  height: 1px;
+  border-top: 1px solid hsla(0, 0%, 100%, 0.4);
+}
+.store-details-options {
+  margin-top: 10px;
+}
+.restaurant-cuisines {
+  font-size: 0.95rem;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -145,39 +122,14 @@ ul.dots-after li:last-child:after {
 .logo-wrap {
   background-color: #fff;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   text-align: center;
 }
 .lander {
   padding: 2.5rem 3rem;
 }
-.store-details {
-  border-top: 1px solid hsla(0, 0%, 100%, 0.4);
-  padding-top: 1rem;
-}
-.transparent-btn {
-  border-radius: 28px;
-  border: 2px solid #fff;
-  color: #fff;
-  padding: 0 1rem;
-  font-size: 0.9rem;
-  height: 43px;
-}
-.transparent-btn svg path {
-  fill: #fff !important;
-}
-.store-details-info {
-  font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 12px;
-  text-transform: capitalize;
-  margin-bottom: 0.6rem;
-}
-.store-details-info-value {
-  font-weight: 700;
-  font-size: 1.35rem;
-}
+
 .store-status {
   text-transform: uppercase;
   font-weight: 700;
@@ -191,20 +143,18 @@ ul.dots-after li:last-child:after {
 }
 .reviews-btn,
 .more-info-btn {
+  font-size: 0.9rem;
   color: #ffff;
   background-color: transparent;
   border-radius: 5px;
-  padding: 0.5rem 0.2rem;
+  padding: 0.2rem;
   text-transform: uppercase;
+  height: 35px;
 }
-.transparent-btn:hover,
-.reviews-btn:hover,
-.more-info-btn:hover {
-  background-color: rgba(238, 236, 236, 0.3);
-}
-
-.more-info-btn svg path {
-  fill: #fff !important;
+.reviews-btn .flex-items-center,
+.more-info-btn .flex-items-center {
+  position: relative;
+  top: 3px;
 }
 
 /* (1366x768) WXGA Display */
@@ -223,6 +173,35 @@ ul.dots-after li:last-child:after {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .lander {
+    padding: 20px;
+    justify-content: center;
+  }
+  .restaurant-cuisines,
+  .restaurant-name {
+    text-align: center;
+  }
+  .restaurant-name {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    font-weight: 700;
+    line-height: 1.8rem;
+  }
+  .restaurant-cuisines {
+    margin: 10px 0;
+  }
+  .logo-wrap {
+    margin: 20px 0 0 0;
+  }
+  .lander-store-details {
+    width: 100%;
+  }
+  .store-details-options {
+    margin-bottom: 1.5rem;
+  }
+  .line-separator {
+    margin: 20px 0;
+  }
 }
 
 /* small mobile :576px. */
@@ -233,6 +212,26 @@ ul.dots-after li:last-child:after {
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
+  .lander {
+    padding: 20px;
+    justify-content: center;
+  }
+  .restaurant-cuisines,
+  .restaurant-name {
+    text-align: center;
+  }
+  .restaurant-name {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    font-weight: 700;
+    line-height: 1.8rem;
+  }
+  .restaurant-cuisines {
+    margin: 10px 0;
+  }
+  .logo-wrap {
+    margin: 20px 0 0 0;
+  }
 }
 
 /* Large Mobile :480px. */
