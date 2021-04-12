@@ -1,20 +1,24 @@
 <template>
-  <div class="dropdown" :id="id" :class="classes">
-    <div class="d-flex dropdown-buttons items-center" @click="show = !show">
-      <button class=" w-100 dropdown-btn items-center">
-        <span v-if="label" class="">
-          {{ label }}
-        </span>
-        <span v-else class="" style="display: inline-block; padding: 10px 30px">
-          {{ activeMenu.category_name }}
-        </span>
-      </button>
-      <span class="toggle-icon d-flex items-center">
-        <fa :icon="['fas', 'chevron-down']" />
-      </span>
-    </div>
+  <div
+    class="dropdown"
+    :id="id"
+    :class="dropdownClasses"
+    :ref="`dropdown${id}`"
+  >
+    <dropdown-button
+      :classes="contentOnly ? `d-none ${btnClasses}` : `${btnClasses}`"
+      :id="id"
+      :label="label"
+      :ref="`dropdownButton${id}`"
+      @toggle-dropdown="toggleDropdown"
+    />
 
-    <div v-if="show" class="dropdown-content">
+    <div
+      :class="show ? 'visible' : 'hidden'"
+      class="dropdown-content"
+      :ref="`dropdownContent${id}`"
+      :style="styles"
+    >
       <button
         v-for="(option, index) in options"
         class="d-block w-100 text-left"
@@ -31,8 +35,10 @@
 
 <script>
 import uniqueId from "lodash.uniqueid";
+import DropdownButton from "@/components/shared/DropdownButton";
 export default {
   name: "Dropdown",
+  components: { DropdownButton },
   props: {
     options: {
       type: Array,
@@ -42,9 +48,44 @@ export default {
       type: String,
       default: ""
     },
-    classes: {
+    btnClasses: {
       type: String,
       default: ""
+    },
+    dropdownClasses: {
+      type: String,
+      default: ""
+    },
+    adjust: {
+      type: Boolean,
+      default: false
+    },
+    setFixed: {
+      type: Boolean,
+      default: false
+    },
+    contentOnly: {
+      type: Boolean,
+      default: false
+    },
+    extButtonId: {
+      type: String,
+      default: ""
+    },
+    fixedWidth: {
+      type: Number,
+      default: null
+    }
+  },
+  watch: {
+    fixedWidth: {
+      handler(val) {
+        if (val) {
+          this.styles.width = `${val}px`;
+          console.log(this.fixedWidth);
+          console.log(this.styles);
+        }
+      }
     }
   },
   computed: {
@@ -57,8 +98,10 @@ export default {
   },
   data() {
     return {
-      show: true,
-      selectedOption: ""
+      show: false,
+      selectedOption: "",
+      styles: {},
+      checking: false
     };
   },
   mounted() {
@@ -69,6 +112,7 @@ export default {
   },
   methods: {
     setActiveMenu(option) {
+      console.log(this.$refs);
       if (!this.label) {
         this.$store.commit("setActiveMenu", option);
       } else {
@@ -79,18 +123,119 @@ export default {
     clear(e) {
       const el = document.getElementById(this.id);
       const { target } = e;
+
+      if (this.extButtonId) {
+        const extButton = document.getElementById(
+          `dropdownButton${this.extButtonId}`
+        );
+        if (
+          el !== target &&
+          !el.contains(target) &&
+          extButton !== target &&
+          !extButton.contains(target)
+        ) {
+          if (this.show) {
+            this.$emit("on-close");
+          }
+          this.show = false;
+        }
+        return;
+      }
       if (el !== target && !el.contains(target)) {
+        if (this.show) {
+          this.$refs[`dropdownButton${this.id}`].toggleIcon();
+        }
         this.show = false;
+      }
+    },
+    toggleDropdown() {
+      this.onScroll();
+      const that = this;
+      setTimeout(function() {
+        that.show = !that.show;
+      }, 100);
+    },
+    onScroll() {
+      if (!this.adjust) {
+        return;
+      }
+      const dropdownButton = document.getElementById(
+        `dropdownButton${this.id}`
+      );
+      const dropdownContent = this.$refs[`dropdownContent${this.id}`];
+      const dropdown = this.$refs[`dropdown${this.id}`];
+      const windowHeight = window.innerHeight;
+      const dropdownContentLeftSpace = dropdownContent.getBoundingClientRect()
+        .left;
+      const rightSpace =
+        window.innerWidth -
+        dropdownButton.getBoundingClientRect().left -
+        dropdownButton.getBoundingClientRect().width;
+      const leftSpace = dropdownContent.getBoundingClientRect().left;
+      if (!this.checking) {
+        this.checking = true;
+        const that = this;
+        setTimeout(function() {
+          if (
+            dropdownContent.getBoundingClientRect().height +
+              dropdown.getBoundingClientRect().top >
+            windowHeight + 20
+          ) {
+            dropdownContent.style.position = `absolute`;
+            dropdownContent.style.left = 0;
+            dropdownContent.style.right = 0;
+            dropdownContent.style.top = `-${dropdownContent.clientHeight +
+              10}px`;
+            console.log("exceeds");
+          }
+          if (
+            dropdownContent.getBoundingClientRect().height +
+              dropdown.getBoundingClientRect().top <
+            windowHeight + 20
+          ) {
+            dropdownContent.style.position = `absolute`;
+            dropdownContent.style.right = 0;
+            dropdownContent.style.left = 0;
+            dropdownContent.style.top = `${45}px`;
+            console.log("does not exceed");
+          }
+
+          if (that.fixedWidth) {
+            dropdownContent.style.top = `-${15}px`;
+          }
+
+          if (dropdown.getBoundingClientRect().top < 20) {
+            dropdownContent.style.position = `fixed`;
+            dropdownContent.style["z-index"] = 10000;
+            dropdownContent.style.top = 0;
+            dropdownContent.style.left = `${dropdownContentLeftSpace}px`;
+            dropdownContent.style.right = `${rightSpace}px`;
+            if (that.fixedWidth) {
+              dropdownContent.style.cssText =
+                dropdownContent.style.cssText +
+                ` left: ${leftSpace}px !important;`;
+              dropdownContent.style.right = `${rightSpace}px`;
+              dropdownContent.style.top = 0;
+            }
+            console.log("at top");
+          }
+
+          that.checking = false;
+        }, 50);
       }
     }
   },
   created() {
-    document.addEventListener("touchstart", this.clear);
+    // document.addEventListener("touchstart", this.clear);
     document.addEventListener("click", this.clear);
+    document.addEventListener("scroll", this.onScroll);
+    document.addEventListener("resize", this.onScroll);
   },
   unmounted() {
-    document.removeEventListener("touchstart", this.clear);
+    // document.removeEventListener("touchstart", this.clear);
     document.removeEventListener("click", this.clear);
+    document.removeEventListener("scroll", this.onScroll);
+    document.removeEventListener("resize", this.onScroll);
   }
 };
 </script>
@@ -116,7 +261,7 @@ export default {
   position: absolute;
   background-color: #fff;
   color: red;
-  top: 45px;
+  /*top: 45px;*/
   left: 0;
   right: 0;
   z-index: 10;
@@ -136,32 +281,14 @@ export default {
 .dropdown-content button:hover {
   background-color: #dbdada;
 }
-.dropdown-buttons {
-  color: #ffffff;
-  height: 38px;
-  border-radius: 28px;
-  border: 2px solid red;
+
+.dropdown.delivery .dropdown-content {
+  /*top: 48px;*/
 }
-.dropdown-btn {
-  border-radius: 28px 0 0 28px;
-}
-.toggle-icon {
-  padding: 0 1.2rem 0 1rem;
-  background-color: transparent;
-  border-radius: 0 28px 28px 0;
-  border-left: 1px solid #fff;
-  height: 22px;
-}
-.toggle-icon:hover {
-  cursor: pointer;
+.dropdown.stores .dropdown-content {
+  /*top: 45px;*/
 }
 
-.dropdown.stores .dropdown-btn {
-  color: #e39419;
-  background-color: transparent;
-  padding: 0 4rem;
-  text-align: center;
-}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
@@ -178,7 +305,7 @@ export default {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .dropdown.stores {
+  .dropdown.stores-dropdown {
     min-width: 30%;
     margin: 0 auto;
   }
@@ -190,6 +317,9 @@ export default {
     right: 0;
     width: 265px;
   }
+  .delivery-dropdown .dropdown-content {
+    left: 0 !important;
+  }
 }
 
 /* small mobile :576px. */
@@ -200,17 +330,17 @@ export default {
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
-  .dropdown.stores {
+  .dropdown.stores-dropdown {
     min-width: 70%;
     margin: 0 auto;
   }
-  .dropdown.stores .dropdown-btn {
-    padding: 0 10px;
-  }
   .dropdown-content {
-    left: unset;
+    left: unset !important;
     right: 0;
     width: 265px;
+  }
+  .delivery-dropdown .dropdown-content {
+    left: 0 !important;
   }
 }
 

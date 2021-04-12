@@ -1,39 +1,78 @@
 <template>
-  <div class=" lander-options">
-    <ul class="d-flex justify-right-end">
-      <li class="mr-half">
-        <dropdown
-          label="Delivery"
-          classes="delivery"
-          :options="['Delivery', 'Pick up order']"
-        >
-          <template v-slot:option="{ item }">
-            <span>{{ item }}</span>
-          </template>
-        </dropdown>
-      </li>
-      <li class="mr-half">
-        <button class="transparent-btn d-flex items-center">
-          <span class="mr-half">
-            <inline-svg
-              :size="20"
-              :path="require(`!html-loader!../../assets/svgs/users.svg`)"
-            /> </span
-          >Start Group Order
-        </button>
-      </li>
-      <li>
-        <button class="transparent-btn">Book a table</button>
-      </li>
-    </ul>
+  <div>
+    <div class=" lander-options">
+      <ul class="d-flex justify-right-end">
+        <li class="mr-half">
+          <dropdown-button
+            :id="id"
+            label="Delivery"
+            classes="delivery"
+            :ref="`dropdownButton${id}`"
+            @toggle-dropdown="toggleDropdown"
+          />
+        </li>
+        <li class="mr-half">
+          <button class="transparent-btn d-flex items-center">
+            <span class="mr-half">
+              <inline-svg
+                :size="20"
+                :path="require(`!html-loader!../../assets/svgs/users.svg`)"
+              /> </span
+            >Start Group Order
+          </button>
+        </li>
+        <li>
+          <button class="transparent-btn">Book a table</button>
+        </li>
+      </ul>
+    </div>
+    <dropdown
+      label="Delivery"
+      btn-classes="delivery"
+      dropdown-classes="delivery-dropdown"
+      :options="['Delivery', 'Pick up order']"
+      adjust
+      set-fixed
+      ref="dropdownContent"
+      content-only
+      :ext-button-id="id"
+      :fixed-width="fixedWidth"
+      @on-close="$refs[`dropdownButton${id}`].toggleIcon()"
+    >
+      <template v-slot:option="{ item }">
+        <span>{{ item }}</span>
+      </template>
+    </dropdown>
   </div>
 </template>
 
 <script>
 import Dropdown from "@/components/Dropdown";
+import DropdownButton from "@/components/shared/DropdownButton";
+import uniqueId from "lodash.uniqueid";
 export default {
   name: "LanderOptions",
-  components: { Dropdown }
+  components: { DropdownButton, Dropdown },
+  computed: {
+    id() {
+      return `dropdown__button__${uniqueId()}`;
+    }
+  },
+  data() {
+    return {
+      fixedWidth: 0
+    };
+  },
+  mounted() {
+    console.log(this.$refs[`dropdownButton${this.id}`].$el.offsetWidth);
+    this.fixedWidth = this.$refs[`dropdownButton${this.id}`].$el.offsetWidth;
+  },
+  methods: {
+    toggleDropdown() {
+      console.log("clecked here");
+      this.$refs.dropdownContent.toggleDropdown();
+    }
+  }
 };
 </script>
 
@@ -82,10 +121,8 @@ export default {
 
 @media (max-width: 575px) {
   .lander-options ul li {
-    /*flex-shrink: 0;*/
     margin-right: 0.8rem;
     flex: 0 0 auto;
-    /*width: 400px;*/
   }
   .lander ul li:last-child {
     margin-right: 0;
@@ -96,14 +133,13 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    /*width: 500px;*/
+    overflow-y: hidden;
     justify-content: unset;
   }
   .lander-options {
     margin-bottom: 1rem;
   }
   .transparent-btn {
-    /*padding: 0 3rem;*/
   }
 }
 

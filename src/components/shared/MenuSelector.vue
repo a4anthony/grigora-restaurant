@@ -3,7 +3,13 @@
     class="d-inline-flex flex-wrap justify-between flex-column centered-sm centered-md"
   >
     <span class=" text-yellow text-center menu-select-text">Chose a Menu</span>
-    <dropdown :options="data.all_data" classes="stores">
+    <dropdown
+      :options="data.all_data"
+      classes="stores"
+      adjust
+      btn-classes="stores"
+      dropdown-classes="stores-dropdown"
+    >
       <template v-slot:option="{ item }">
         <span style="font-weight: 700">{{ item.category_name }} </span>
         <span> [{{ item.start_time }} - {{ item.end_time }}]</span>
