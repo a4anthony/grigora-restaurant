@@ -88,6 +88,9 @@ export default {
 .transparent-btn svg path {
   fill: #fff !important;
 }
+.lander-options {
+  margin-bottom: 1rem;
+}
 .lander-options ul {
   margin: 0;
   padding: 0;
@@ -110,11 +113,17 @@ export default {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .lander-options {
+    margin-bottom: 1rem;
+  }
 }
 
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .lander-options {
+    margin-bottom: 1rem;
+  }
 }
 
 /* extra small mobile 320px. */
@@ -127,8 +136,7 @@ export default {
   .lander ul li:last-child {
     margin-right: 0;
   }
-  .lander-options {
-  }
+
   .lander-options ul {
     display: flex;
     flex-wrap: nowrap;

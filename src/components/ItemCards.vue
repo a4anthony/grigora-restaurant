@@ -160,6 +160,31 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .w-sm-100 {
+    width: 100% !important;
+  }
+  .flex-wrap-sm {
+    flex-wrap: wrap;
+  }
+  .flex-grow-sm-0 {
+    flex-grow: unset !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-bottom: 1rem;
+  }
+  .flex-grow-sm-0:last-child {
+    margin-bottom: 0 !important;
+  }
+  .item-left {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 1rem;
+  }
+  .item-right {
+    width: 100%;
+    padding-left: 0;
+  }
 }
 
 /* extra small mobile 320px. */

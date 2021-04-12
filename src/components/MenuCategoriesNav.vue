@@ -165,6 +165,9 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .menu-categories-nav {
+    width: 100vw;
+  }
 }
 
 /* extra small mobile 320px. */

@@ -84,6 +84,10 @@ img {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  img,
+  .promo-bottom-text {
+    width: 55%;
+  }
 }
 
 /* small mobile :576px. */
@@ -95,7 +99,6 @@ img {
 
 @media (max-width: 575px) {
   .promo {
-    /*padding-left: 1rem;*/
     position: relative;
   }
   img,

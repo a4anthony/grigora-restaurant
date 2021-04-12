@@ -12,7 +12,9 @@
   >
     <!--logo-->
     <div class="logo-wrap d-flex items-center justify-center mr-1">
-      <logo :size="80" />
+      <div class="logo">
+        <logo :size="80" />
+      </div>
     </div>
     <div class="flex-grow text-white">
       <!--restaurant name-->
@@ -119,7 +121,7 @@ ul.dots-after li:after {
 ul.dots-after li:last-child:after {
   content: "";
 }
-.logo-wrap {
+.logo-wrap .logo {
   background-color: #fff;
   border-radius: 50%;
   width: 140px;
@@ -190,7 +192,7 @@ ul.dots-after li:last-child:after {
   .restaurant-cuisines {
     margin: 10px 0;
   }
-  .logo-wrap {
+  .logo-wrap .logo {
     margin: 20px 0 0 0;
   }
   .lander-store-details {
@@ -202,11 +204,34 @@ ul.dots-after li:last-child:after {
   .line-separator {
     margin: 20px 0;
   }
+  .logo-wrap {
+    width: 100%;
+  }
 }
 
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .lander {
+    padding: 20px;
+    justify-content: center;
+  }
+  .restaurant-cuisines,
+  .restaurant-name {
+    text-align: center;
+  }
+  .restaurant-name {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    font-weight: 700;
+    line-height: 1.8rem;
+  }
+  .restaurant-cuisines {
+    margin: 10px 0;
+  }
+  .logo-wrap .logo {
+    margin: 20px 0 0 0;
+  }
 }
 
 /* extra small mobile 320px. */
@@ -229,7 +254,7 @@ ul.dots-after li:last-child:after {
   .restaurant-cuisines {
     margin: 10px 0;
   }
-  .logo-wrap {
+  .logo-wrap .logo {
     margin: 20px 0 0 0;
   }
 }

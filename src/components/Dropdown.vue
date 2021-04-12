@@ -325,6 +325,18 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .dropdown.stores-dropdown {
+    min-width: 50%;
+    margin: 0 auto;
+  }
+  .dropdown-content {
+    left: unset !important;
+    right: 0;
+    width: 265px;
+  }
+  .delivery-dropdown .dropdown-content {
+    left: 0 !important;
+  }
 }
 
 /* extra small mobile 320px. */

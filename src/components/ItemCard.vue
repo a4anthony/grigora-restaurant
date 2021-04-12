@@ -176,6 +176,25 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .item-card-scrollable {
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .item-card {
+    /*width: 100%;*/
+  }
+  .w-sm-100 {
+    width: 100% !important;
+  }
+  .flex-grow-sm-0 {
+    flex-grow: unset !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 1rem;
+  }
+  .flex-grow-sm-0:last-child {
+    margin-bottom: 0 !important;
+  }
 }
 
 /* extra small mobile 320px. */

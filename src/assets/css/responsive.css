@@ -23,6 +23,10 @@
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .centered-sm {
+    display: flex !important;
+    justify-content: center !important;
+  }
 }
 
 /* extra small mobile 320px. */
@@ -37,7 +41,15 @@
 /* Large Mobile :480px. */
 
 @media only screen and (min-width: 480px) and (max-width: 575px) {
+  .centered-sm {
+    display: flex !important;
+    justify-content: center !important;
+  }
 }
 
 @media only screen and (max-width: 575px) and (min-width: 480px) {
+  .centered-sm {
+    display: flex !important;
+    justify-content: center !important;
+  }
 }

@@ -100,11 +100,28 @@ export default {
   .nav-right-tab {
     justify-content: flex-end;
   }
+  .nav-location-selector {
+    margin: 0 10%;
+  }
 }
 
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .nav-right-tab {
+    display: none;
+  }
+  .nav-left-tab {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-navbar-toggle-sm {
+    width: 20%;
+    display: block;
+  }
+  .nav-location-selector {
+    margin: 0 10%;
+  }
 }
 
 /* extra small mobile 320px. */

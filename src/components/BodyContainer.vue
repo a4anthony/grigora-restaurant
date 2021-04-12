@@ -50,6 +50,12 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .side-content {
+    display: none;
+  }
+  .main-content {
+    width: 100% !important;
+  }
 }
 
 /* extra small mobile 320px. */
