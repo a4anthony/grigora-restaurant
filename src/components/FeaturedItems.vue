@@ -42,16 +42,11 @@ export default {
     },
     scrollEnd() {
       const element = document.getElementById("carousel");
-      console.log(element.clientWidth);
-
       element.scrollTo({
         top: 0,
-        left: 359,
+        left: element.clientWidth + 30,
         behavior: "smooth"
       });
-      var sLeft = element.scrollLeft;
-      // element.scrollLeft =359
-      console.log(sLeft);
     }
   }
 };
