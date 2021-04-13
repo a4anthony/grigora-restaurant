@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { appData } from "@/data";
-import ItemCard from "@/components/ItemCard";
+import ItemCard from "@/components/shared/ItemCard";
 export default {
   name: "FeaturedItems",
   components: { ItemCard, SectionHeader },

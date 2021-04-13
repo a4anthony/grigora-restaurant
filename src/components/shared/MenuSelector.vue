@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Dropdown from "@/components/Dropdown";
+import Dropdown from "@/components/shared/Dropdown";
 import { appData } from "@/data";
 export default {
   name: "MenuSelector",

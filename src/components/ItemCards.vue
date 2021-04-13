@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import SectionHeader from "@/components/SectionHeader";
-import ItemCard from "@/components/ItemCard";
+import SectionHeader from "@/components/shared/SectionHeader";
+import ItemCard from "@/components/shared/ItemCard";
 import { appData } from "@/data";
 export default {
   name: "ItemCards",

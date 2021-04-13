@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import Dropdown from "@/components/Dropdown";
+import Dropdown from "@/components/shared/Dropdown";
 import DropdownButton from "@/components/shared/DropdownButton";
 import uniqueId from "lodash.uniqueid";
 export default {

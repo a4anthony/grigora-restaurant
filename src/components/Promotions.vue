@@ -1,9 +1,11 @@
 <template>
   <div class="promo" id="promotions">
-    <div class="promo-caption">
-      <span>Ongoing </span><span class="text-yellow">Promos</span>
-    </div>
-    <span class="d-block  promo-sub-caption">Apply promo at checkout </span>
+    <!--section header-->
+    <section-header
+      :title="`<span>Ongoing </span><span class='text-yellow'>Promos</span>`"
+      caption="Apply promo at checkout "
+    />
+    <!--promo image-->
     <img
       src="../assets/images/promo.jpeg"
       alt=""
@@ -11,8 +13,12 @@
       @mouseleave="showPromoText = !showPromoText"
     />
     <span class="d-block  promo-bottom-text text-center">Welcome Promo</span>
-
-    <div v-if="showPromoText" class="promo-text" style="visibility: visible; ">
+    <div
+      class="promo-text"
+      :class="showPromoText ? 'slide-down visible' : 'slide-up hidden'"
+      ref="promoText"
+      :style="promoTextStyles"
+    >
       Welcome promo for new customers on orders above 500 from this restaurant -
       GET 20% OFF orders above ₦500
     </div>
@@ -20,12 +26,20 @@
 </template>
 
 <script>
+import SectionHeader from "@/components/shared/SectionHeader";
 export default {
-  name: "promotions",
+  name: "Promotions",
+  components: { SectionHeader },
   data() {
     return {
-      showPromoText: false
+      showPromoText: false,
+      promoTextStyles: {}
     };
+  },
+  mounted() {
+    this.promoTextStyles.left = `-${
+      this.$refs.promoText.getBoundingClientRect().left
+    }px`;
   }
 };
 </script>
@@ -43,8 +57,8 @@ export default {
   position: absolute !important;
   overflow-y: auto;
   overflow-x: hidden;
-  left: 0;
-  bottom: -40px;
+  /*left: 0;*/
+  /*bottom: -40px;*/
 }
 .promo-caption {
   margin: 2.5rem 0 0.3rem 0;
@@ -66,7 +80,60 @@ img {
 }
 .promo {
   /*padding-left: 5rem;*/
+  margin-top: 2rem;
   position: relative;
+}
+
+.slide-down {
+  -webkit-animation: slide-down 0.5s forwards;
+  animation: slide-down 0.5s forwards;
+}
+.slide-up {
+  -webkit-animation: slide-up 0.5s forwards;
+  animation: slide-up 0.5s forwards;
+}
+
+@keyframes slide-down {
+  0% {
+    z-index: 10;
+    bottom: 0;
+  }
+  100% {
+    bottom: -40px;
+    z-index: 50;
+  }
+}
+@keyframes slide-up {
+  0% {
+    z-index: 50;
+    bottom: -40px;
+  }
+  100% {
+    bottom: 0;
+    z-index: 10;
+  }
+}
+
+@-webkit-keyframes slide-down {
+  0% {
+    z-index: 10;
+    bottom: 0;
+  }
+  100% {
+    bottom: -40px;
+    z-index: 50;
+  }
+}
+
+@-webkit-keyframes slide-up {
+  0% {
+    z-index: 50;
+    bottom: -40px;
+  }
+  100% {
+    bottom: 0;
+    z-index: 10;
+  }
 }
 /* (1366x768) WXGA Display */
 
@@ -86,7 +153,10 @@ img {
 @media (min-width: 768px) and (max-width: 991px) {
   img,
   .promo-bottom-text {
-    width: 55%;
+    width: 40%;
+  }
+  .promo-bottom-text {
+    margin-top: 15px;
   }
 }
 
@@ -104,6 +174,9 @@ img {
   img,
   .promo-bottom-text {
     width: 50%;
+  }
+  .promo-bottom-text {
+    margin-top: 15px;
   }
 }
 

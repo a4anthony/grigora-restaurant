@@ -13,8 +13,8 @@
 
 <script>
 import BodyContainer from "@/components/BodyContainer";
-import MenuCategoriesNav from "@/components/MenuCategoriesNav";
-import Cart from "@/components/Cart";
+import MenuCategoriesNav from "@/components/shared/MenuCategoriesNav";
+import Cart from "@/components/shared/Cart";
 export default {
   name: "PageNav",
   components: { Cart, MenuCategoriesNav, BodyContainer },

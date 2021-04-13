@@ -23,8 +23,8 @@
 import NavigationBar from "@/components/layout/NavigationBar";
 import Lander from "@/components/Lander";
 import { appData } from "@/data";
-import Promotions from "@/components/promotions";
-import Cart from "@/components/Cart";
+import Promotions from "@/components/Promotions";
+import Cart from "@/components/shared/Cart";
 import FeaturedItems from "@/components/FeaturedItems";
 import ItemCards from "@/components/ItemCards";
 import FooterBar from "@/components/layout/FooterBar";
@@ -88,6 +88,10 @@ export default {
 @media (min-width: 768px) and (max-width: 991px) {
   .side-content {
     display: none;
+  }
+
+  .main-container {
+    padding: 5px 50px 50px 50px;
   }
 }
 

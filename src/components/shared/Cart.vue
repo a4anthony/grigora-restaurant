@@ -3,7 +3,7 @@
     <div v-if="onlyHeader" class="cart-info d-flex items-center">
       <span class="mr-half">
         <inline-svg
-          :path="require(`!html-loader!../assets/svgs/cart.svg`)"
+          :path="require(`!html-loader!../../assets/svgs/cart.svg`)"
           :size="20"
         />
       </span>
@@ -12,7 +12,7 @@
     <div v-if="!onlyHeader" class="cart-tab  text-center">
       <img
         class="d-block"
-        src="../assets/images/empty-cart.png"
+        src="../../assets/images/empty-cart.png"
         alt=""
         width="200"
         style="margin: 0 auto 1rem auto"
