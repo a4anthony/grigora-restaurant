@@ -64,12 +64,10 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$refs[`dropdownButton${this.id}`].$el.offsetWidth);
     this.fixedWidth = this.$refs[`dropdownButton${this.id}`].$el.offsetWidth;
   },
   methods: {
     toggleDropdown() {
-      console.log("clecked here");
       this.$refs.dropdownContent.toggleDropdown();
     }
   }

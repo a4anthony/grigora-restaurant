@@ -82,8 +82,6 @@ export default {
       handler(val) {
         if (val) {
           this.styles.width = `${val}px`;
-          console.log(this.fixedWidth);
-          console.log(this.styles);
         }
       }
     }
@@ -112,7 +110,6 @@ export default {
   },
   methods: {
     setActiveMenu(option) {
-      console.log(this.$refs);
       if (!this.label) {
         this.$store.commit("setActiveMenu", option);
       } else {
@@ -186,7 +183,7 @@ export default {
             dropdownContent.style.right = 0;
             dropdownContent.style.top = `-${dropdownContent.clientHeight +
               10}px`;
-            console.log("exceeds");
+            // console.log("exceeds");
           }
           if (
             dropdownContent.getBoundingClientRect().height +
@@ -197,7 +194,7 @@ export default {
             dropdownContent.style.right = 0;
             dropdownContent.style.left = 0;
             dropdownContent.style.top = `${45}px`;
-            console.log("does not exceed");
+            // console.log("does not exceed");
           }
 
           if (that.fixedWidth) {
@@ -217,7 +214,7 @@ export default {
               dropdownContent.style.right = `${rightSpace}px`;
               dropdownContent.style.top = 0;
             }
-            console.log("at top");
+            // console.log("at top");
           }
 
           that.checking = false;

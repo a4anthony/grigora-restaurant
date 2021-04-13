@@ -36,10 +36,14 @@
           <li>1.58 KM Away</li>
         </ul>
       </div>
+      <!--store open and more info-->
       <div class="mb-half centered-sm centered-md">
         <ul class="d-flex dots-after">
           <li class="d-flex items-center">
-            <span class="store-status d-block open">open</span>
+            <span v-if="storeStatus" class="store-status d-block open"
+              >open</span
+            >
+            <span v-else class="store-status d-block closed">closed</span>
           </li>
           <li class="d-flex items-center">
             <button class="more-info-btn d-flex items-center">
@@ -93,6 +97,60 @@ export default {
   computed: {
     data() {
       return appData();
+    },
+    storeStatus() {
+      const today = new Date();
+      const time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+      const closingTime = this.data.closing_time;
+      const openingTime = this.data.opening_time;
+
+      if (
+        this.toMins(time) === this.toMins(closingTime) ||
+        this.toMins(time) > this.toMins(closingTime) ||
+        this.toMins(time) < this.toMins(openingTime)
+      ) {
+        return false;
+      }
+
+      return (
+        this.toMins(time) === this.toMins(openingTime) ||
+        (this.toMins(time) > this.toMins(openingTime) &&
+          this.toMins(time) < this.toMins(closingTime))
+      );
+    }
+  },
+  mounted() {},
+  methods: {
+    toMins(time) {
+      const expTime = time.split(":");
+      let hour = null;
+      let min = null;
+      let sec = null;
+      let minsArr = [];
+
+      if (expTime.length === 3) {
+        hour = expTime[0];
+        min = expTime[1];
+        sec = expTime[2];
+      }
+      if (expTime.length === 2) {
+        hour = expTime[0];
+        min = expTime[1];
+      }
+
+      if (hour) {
+        minsArr.push(Number(hour) * 60);
+      }
+      if (min) {
+        minsArr.push(Number(min));
+      }
+      if (sec) {
+        minsArr.push(Number(sec) / 60);
+      }
+
+      return minsArr.reduce((a, b) => a + b, 0);
     }
   }
 };
