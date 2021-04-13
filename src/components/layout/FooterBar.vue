@@ -1,6 +1,7 @@
 <template>
   <footer>
     <div class="footer-links d-flex flex-wrap justify-between">
+      <!--legal tab-->
       <div>
         <h5>Legal</h5>
         <ul>
@@ -9,6 +10,7 @@
           </li>
         </ul>
       </div>
+      <!--company tab-->
       <div>
         <h5>Company</h5>
         <ul>
@@ -17,6 +19,7 @@
           </li>
         </ul>
       </div>
+      <!--contact tab-->
       <div>
         <h5>Contact</h5>
         <ul>
@@ -35,6 +38,7 @@
           </li>
         </ul>
       </div>
+      <!--downloads tab-->
       <div class="downloads">
         <a href="#">
           <img
@@ -51,6 +55,7 @@
       </div>
     </div>
     <div class="footer-bottom">
+      <!--footer socials-->
       <div class="socials">
         <ul class="h-list">
           <li>
@@ -64,6 +69,7 @@
           </li>
         </ul>
       </div>
+      <!--footer copyright-->
       <span class="items-center copyright">
         <span class="logo mr-half">
           <inline-svg
@@ -135,6 +141,7 @@ footer {
   background-color: #181d24;
   z-index: 2;
   position: relative;
+  margin-top: 2rem;
 }
 .footer-links {
   min-height: 20vh;
@@ -228,11 +235,35 @@ footer {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .downloads {
+    width: 100%;
+    flex-shrink: 0;
+    flex-grow: unset !important;
+    flex-basis: unset !important;
+    flex-direction: row !important;
+  }
 }
 
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .footer-links > div {
+    flex-grow: unset;
+    flex-basis: unset;
+    width: 100%;
+  }
+  .footer-bottom .logo {
+    margin-top: 20px;
+    width: 100%;
+    display: block;
+  }
+  .footer-bottom .copyright-text {
+    width: 100%;
+    display: block;
+  }
+  .downloads {
+    flex-direction: row !important;
+  }
 }
 
 /* extra small mobile 320px. */
