@@ -1,18 +1,29 @@
 <template>
   <div class="featured-items" id="featuredItems">
+    <!--section header-->
     <section-header
       :title="`<span class='text-yellow'>Featured </span><span>Items</span>`"
       caption="Vendors featured items"
     />
-
-    <div style="position: relative">
-      <button @click="scrollStart" class="nav-btn prev-btn">
+    <div class="featured-items-container">
+      <!--prev button-->
+      <button
+        @click="scrollStart"
+        class="nav-btn prev-btn"
+        :class="prevBtnHide ? 'hidden' : 'visible'"
+      >
         <fa :icon="['fas', 'arrow-left']" />
       </button>
+      <!--items -->
       <div class="carousel" id="carousel">
         <item-card scrollable v-for="item in data" :key="item" :item="item" />
       </div>
-      <button @click="scrollEnd" class="nav-btn next-btn">
+      <!--next button-->
+      <button
+        @click="scrollEnd"
+        class="nav-btn next-btn"
+        :class="nextBtnHide ? 'hidden' : 'visible'"
+      >
         <fa :icon="['fas', 'arrow-right']" />
       </button>
     </div>
@@ -31,6 +42,12 @@ export default {
       return appData().featured_items;
     }
   },
+  data() {
+    return {
+      nextBtnHide: false,
+      prevBtnHide: true
+    };
+  },
   methods: {
     scrollStart() {
       const element = document.getElementById("carousel");
@@ -39,41 +56,43 @@ export default {
         left: 0,
         behavior: "smooth"
       });
+      this.nextBtnHide = !this.nextBtnHide;
+      this.prevBtnHide = !this.prevBtnHide;
     },
     scrollEnd() {
       const element = document.getElementById("carousel");
+      const currentPosition = element.scrollLeft;
+
       element.scrollTo({
         top: 0,
         left: element.clientWidth + 30,
         behavior: "smooth"
       });
+
+      const that = this;
+      setTimeout(function() {
+        if (currentPosition !== element.scrollLeft) {
+          that.nextBtnHide = !that.nextBtnHide;
+          that.prevBtnHide = !that.prevBtnHide;
+        }
+      }, 500);
     }
   }
 };
 </script>
 
 <style scoped>
+.featured-items-container {
+  position: relative;
+}
 .carousel {
-  /*background-color: #fff;*/
   height: 140px;
-  /*display: flex;*/
-  /*overflow-x: auto;*/
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
 }
-.item {
-  width: 360px;
-  background-color: blue;
-  margin-right: 1rem;
-  flex: 0 0 auto;
-  /*flex-shrink: 0;*/
-}
-.item:last-child {
-  margin-right: 0 !important;
-}
+
 .featured-items {
-  /*padding: 2.5rem 4rem 0 5rem;*/
   margin-top: 2.5rem;
   position: relative;
 }
@@ -91,11 +110,9 @@ export default {
 }
 .next-btn {
   right: -1rem;
-  /*top: 0;*/
 }
 .prev-btn {
   left: -1rem;
-  /*top: 0;*/
 }
 /* (1366x768) WXGA Display */
 
@@ -123,12 +140,9 @@ export default {
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
-  .featured-items {
-    /*padding: 2rem 1rem 0 1rem;*/
-  }
-  .item {
-    width: 100%;
-    flex-shrink: 0;
+  .nav-btn {
+    width: 35px;
+    height: 35px;
   }
 }
 
