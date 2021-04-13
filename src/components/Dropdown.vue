@@ -5,6 +5,7 @@
     :class="dropdownClasses"
     :ref="`dropdown${id}`"
   >
+    <!--dropdown button-->
     <dropdown-button
       :classes="contentOnly ? `d-none ${btnClasses}` : `${btnClasses}`"
       :id="id"
@@ -12,7 +13,7 @@
       :ref="`dropdownButton${id}`"
       @toggle-dropdown="toggleDropdown"
     />
-
+    <!--dropdown content-->
     <div
       :class="show ? 'visible' : 'hidden'"
       class="dropdown-content"
@@ -173,6 +174,7 @@ export default {
         this.checking = true;
         const that = this;
         setTimeout(function() {
+          // place dropdown above
           if (
             dropdownContent.getBoundingClientRect().height +
               dropdown.getBoundingClientRect().top >
@@ -185,6 +187,7 @@ export default {
               10}px`;
             // console.log("exceeds");
           }
+          // place dropdown below
           if (
             dropdownContent.getBoundingClientRect().height +
               dropdown.getBoundingClientRect().top <
@@ -196,11 +199,11 @@ export default {
             dropdownContent.style.top = `${45}px`;
             // console.log("does not exceed");
           }
-
+          // set fixed top position
           if (that.fixedWidth) {
             dropdownContent.style.top = `-${15}px`;
           }
-
+          // stick dropdown to top
           if (dropdown.getBoundingClientRect().top < 20) {
             dropdownContent.style.position = `fixed`;
             dropdownContent.style["z-index"] = 10000;
@@ -223,13 +226,11 @@ export default {
     }
   },
   created() {
-    // document.addEventListener("touchstart", this.clear);
     document.addEventListener("click", this.clear);
     document.addEventListener("scroll", this.onScroll);
     document.addEventListener("resize", this.onScroll);
   },
   unmounted() {
-    // document.removeEventListener("touchstart", this.clear);
     document.removeEventListener("click", this.clear);
     document.removeEventListener("scroll", this.onScroll);
     document.removeEventListener("resize", this.onScroll);
@@ -238,12 +239,6 @@ export default {
 </script>
 
 <style scoped>
-.instruction {
-  text-align: center;
-  color: #e39419;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
 .dropdown {
   position: relative;
 }

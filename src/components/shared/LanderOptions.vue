@@ -2,6 +2,7 @@
   <div>
     <div class=" lander-options">
       <ul class="d-flex justify-right-end">
+        <!--delivery dropdown button-->
         <li class="mr-half">
           <dropdown-button
             :id="id"
@@ -11,6 +12,7 @@
             @toggle-dropdown="toggleDropdown"
           />
         </li>
+        <!--start group order button-->
         <li class="mr-half">
           <button class="transparent-btn d-flex items-center">
             <span class="mr-half">
@@ -21,11 +23,13 @@
             >Start Group Order
           </button>
         </li>
+        <!--book a table button-->
         <li>
           <button class="transparent-btn">Book a table</button>
         </li>
       </ul>
     </div>
+    <!--delivery dropdown content-->
     <dropdown
       label="Delivery"
       btn-classes="delivery"
@@ -85,6 +89,9 @@ export default {
 }
 .transparent-btn svg path {
   fill: #fff !important;
+}
+.transparent-btn:hover {
+  background-color: rgba(238, 236, 236, 0.3);
 }
 .lander-options {
   margin-bottom: 1rem;

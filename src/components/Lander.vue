@@ -11,8 +11,8 @@
     }"
   >
     <!--logo-->
-    <div class="logo-wrap d-flex items-center justify-center mr-1">
-      <div class="logo">
+    <div class="logo-wrap d-flex justify-center mr-1">
+      <div class="logo d-flex justify-center items-center">
         <logo :size="80" />
       </div>
     </div>
@@ -40,16 +40,20 @@
       <div class="mb-half centered-sm centered-md">
         <ul class="d-flex dots-after">
           <li class="d-flex items-center">
-            <span v-if="storeStatus" class="store-status d-block open"
+            <span
+              v-if="storeStatus"
+              class="store-status d-flex items-center  open"
               >open</span
             >
-            <span v-else class="store-status d-block closed">closed</span>
+            <span v-else class="store-status d-flex items-center  closed"
+              >closed</span
+            >
           </li>
           <li class="d-flex items-center">
             <button class="more-info-btn d-flex items-center">
               <span class="mr-half">
                 <inline-svg
-                  :size="21"
+                  :size="19"
                   :path="require(`!html-loader!../assets/svgs/exclamation.svg`)"
                 /> </span
               >more info
@@ -172,6 +176,7 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
 ul.dots-after li:after {
   content: "•";
   margin: 0 0.6rem;
@@ -194,12 +199,17 @@ ul.dots-after li:last-child:after {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 1.1rem;
+  height: 35px;
+  padding-top: 0.2rem;
 }
 .store-status.open {
   color: #21ba85;
 }
 .store-status.closed {
-  color: red;
+  color: #c10015;
+}
+.more-info-btn {
+  margin-top: 0.2rem;
 }
 .reviews-btn,
 .more-info-btn {
@@ -211,10 +221,14 @@ ul.dots-after li:last-child:after {
   text-transform: uppercase;
   height: 35px;
 }
+.reviews-btn:hover,
+.more-info-btn:hover {
+  background-color: rgba(238, 236, 236, 0.3);
+}
 .reviews-btn .flex-items-center,
 .more-info-btn .flex-items-center {
   position: relative;
-  top: 3px;
+  top: 2px;
 }
 
 /* (1366x768) WXGA Display */
