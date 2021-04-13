@@ -6,6 +6,7 @@
     ]"
   >
     <div class="d-flex" style="height: 100%">
+      <!--item image-->
       <div
         class="flex-grow mr-half item-img"
         :style="{
@@ -15,8 +16,11 @@
         }"
       ></div>
       <div class="flex-grow" style="min-width: 1px; position: relative">
+        <!--item title-->
         <h6 class="item-title">{{ item.name }}</h6>
+        <!--item description-->
         <p class="item-description text-wrap">{{ item.description }}</p>
+        <!--item rating-->
         <span
           class="item-rating"
           :class="item.avg_ratings === '0.0' ? 'bad' : 'good'"
@@ -31,12 +35,14 @@
           class="d-flex justify-between"
           style="position: absolute; left: 0;bottom: 0;right: 0"
         >
+          <!--item price-->
           <p class="item-price">₦ {{ item.price }}</p>
+          <!--item status-->
           <p class="item-status" v-if="item.status === '0'">Not Available</p>
         </div>
-        <!--<span class="text-wrap">{{ item.description }}</span>-->
       </div>
     </div>
+    <!--overlay-->
     <div v-if="item.status === '0'" class="overlay"></div>
   </div>
 </template>
@@ -128,9 +134,7 @@ export default {
   position: relative;
   transition: box-shadow 500ms;
 }
-.item-card {
-  /*width: 50%;*/
-}
+
 .item-card-scrollable {
   flex: 0 0 auto;
   width: 360px;
@@ -180,20 +184,14 @@ export default {
     width: 100%;
     flex-shrink: 0;
   }
-  .item-card {
-    /*width: 100%;*/
+  .item-card-scrollable .item-img,
+  .item-card .item-img {
+    min-width: 20%;
+    max-width: 20%;
   }
-  .w-sm-100 {
-    width: 100% !important;
-  }
-  .flex-grow-sm-0 {
-    flex-grow: unset !important;
-    width: 100% !important;
-    margin-right: 0 !important;
-    margin-bottom: 1rem;
-  }
-  .flex-grow-sm-0:last-child {
-    margin-bottom: 0 !important;
+  .item-card-scrollable {
+    flex: 0 0 auto;
+    width: 360px;
   }
 }
 
@@ -203,21 +201,6 @@ export default {
   .item-card-scrollable {
     width: 100%;
     flex-shrink: 0;
-  }
-  .item-card {
-    /*width: 100%;*/
-  }
-  .w-sm-100 {
-    width: 100% !important;
-  }
-  .flex-grow-sm-0 {
-    flex-grow: unset !important;
-    width: 100% !important;
-    margin-right: 0 !important;
-    margin-bottom: 1rem;
-  }
-  .flex-grow-sm-0:last-child {
-    margin-bottom: 0 !important;
   }
 }
 
