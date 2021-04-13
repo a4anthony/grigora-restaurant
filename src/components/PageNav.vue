@@ -62,7 +62,7 @@ export default {
     top: -20px;
   }
   100% {
-    top: 60px;
+    top: 65px;
     z-index: 50;
     -webkit-box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);
