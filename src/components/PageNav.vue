@@ -18,6 +18,11 @@ import Cart from "@/components/shared/Cart";
 export default {
   name: "PageNav",
   components: { Cart, MenuCategoriesNav, BodyContainer },
+  computed: {
+    sideDrawerStatus() {
+      return this.$store.state.sideDrawerStatus;
+    }
+  },
   data() {
     return {
       slideDown: false
@@ -26,11 +31,10 @@ export default {
   methods: {
     onScroll() {
       const landerHeight = document.getElementById("lander").clientHeight;
-      if (window.scrollY > landerHeight + 20) {
-        this.slideDown = true;
-      } else {
-        this.slideDown = false;
+      if (this.sideDrawerStatus) {
+        return;
       }
+      this.slideDown = window.scrollY > landerHeight + 20;
     }
   },
   created() {
@@ -62,7 +66,7 @@ export default {
     top: -20px;
   }
   100% {
-    top: 65px;
+    top: 64px;
     z-index: 50;
     -webkit-box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);

@@ -3,7 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     activeMenu: "",
-    activeSubMenu: ""
+    activeSubMenu: "",
+    sideDrawerStatus: null
   },
   mutations: {
     setActiveMenu(state, data) {
@@ -14,6 +15,9 @@ export default createStore({
     },
     setActiveSubMenu(state, data) {
       state.activeSubMenu = data;
+    },
+    setSideDrawerStatus(state, data) {
+      state.sideDrawerStatus = data;
     }
   },
   actions: {},

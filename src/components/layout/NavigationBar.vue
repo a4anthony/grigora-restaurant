@@ -11,7 +11,7 @@
         <location-selector />
       </div>
       <div class="nav-navbar-toggle-sm">
-        <navbar-toggle />
+        <navbar-toggle @toggle-side-drawer="sideDrawerOpen = !sideDrawerOpen" />
       </div>
     </div>
     <!--right tab-->
@@ -26,9 +26,18 @@
       </div>
       <!--navbar toggle-->
       <div class="nav-navbar-toggle">
-        <navbar-toggle />
+        <navbar-toggle @toggle-side-drawer="sideDrawerOpen = !sideDrawerOpen" />
       </div>
     </div>
+    <side-drawer
+      :is-open="sideDrawerOpen"
+      @toggle-side-drawer="sideDrawerOpen = !sideDrawerOpen"
+    />
+    <div
+      class="overlay"
+      :class="sideDrawerOpen ? 'visible' : 'hidden'"
+      @click="sideDrawerOpen = !sideDrawerOpen"
+    ></div>
   </nav>
 </template>
 
@@ -38,9 +47,22 @@ import LocationSelector from "@/components/shared/LocationSelector";
 import SearchInput from "@/components/shared/SearchInput";
 import AuthLink from "@/components/shared/AuthLink";
 import NavbarToggle from "@/components/shared/NavbarToggle";
+import SideDrawer from "@/components/shared/SideDrawer";
 export default {
   name: "NavigationBar",
-  components: { NavbarToggle, AuthLink, SearchInput, LocationSelector, Logo }
+  components: {
+    SideDrawer,
+    NavbarToggle,
+    AuthLink,
+    SearchInput,
+    LocationSelector,
+    Logo
+  },
+  data() {
+    return {
+      sideDrawerOpen: true
+    };
+  }
 };
 </script>
 
@@ -71,7 +93,14 @@ export default {
 .nav-navbar-toggle {
   width: 15%;
 }
-
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {

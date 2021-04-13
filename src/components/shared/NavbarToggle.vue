@@ -1,5 +1,8 @@
 <template>
-  <button class="menu-toggle d-flex items-center justify-center">
+  <button
+    class="menu-toggle d-flex items-center justify-center"
+    @click="$emit('toggle-side-drawer')"
+  >
     <span>
       <fa :icon="['fas', 'bars']" />
     </span>

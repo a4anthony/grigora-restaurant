@@ -113,8 +113,10 @@ export default {
     setActiveMenu(option) {
       if (!this.label) {
         this.$store.commit("setActiveMenu", option);
+        this.$refs[`dropdownButton${this.id}`].toggleIcon();
       } else {
         this.selectedOption = option;
+        this.$emit("on-close");
       }
       this.show = false;
     },
