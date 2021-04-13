@@ -12,7 +12,9 @@
       @mouseenter="showPromoText = !showPromoText"
       @mouseleave="showPromoText = !showPromoText"
     />
+    <!--promo bottom text-->
     <span class="d-block  promo-bottom-text text-center">Welcome Promo</span>
+    <!--promo text-->
     <div
       class="promo-text"
       :class="showPromoText ? 'slide-down visible' : 'slide-up hidden'"
@@ -57,18 +59,8 @@ export default {
   position: absolute !important;
   overflow-y: auto;
   overflow-x: hidden;
-  /*left: 0;*/
-  /*bottom: -40px;*/
 }
-.promo-caption {
-  margin: 2.5rem 0 0.3rem 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-.promo-sub-caption {
-  margin-bottom: 1.5rem;
-  color: #999;
-}
+
 .promo-bottom-text {
   width: 30%;
   text-transform: uppercase;
@@ -79,7 +71,6 @@ img {
   width: 30%;
 }
 .promo {
-  /*padding-left: 5rem;*/
   margin-top: 2rem;
   position: relative;
 }
