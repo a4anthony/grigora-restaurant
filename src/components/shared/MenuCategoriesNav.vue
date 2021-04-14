@@ -41,9 +41,7 @@ export default {
       return ids;
     }
   },
-  mounted() {
-    console.log(this.$store);
-  },
+  mounted() {},
   methods: {
     setActiveSubMenu(menu) {
       this.$store.commit("setActiveSubMenu", menu);
@@ -54,12 +52,15 @@ export default {
         .clientHeight;
       let idIndex = "";
       let preHeight = 0;
+
+      // get menu index
       this.menuIds.forEach((id, index) => {
         if (id.id === `itemSection__${menu.id}`) {
           idIndex = index;
         }
       });
 
+      // calculate scroll height
       this.menuIds.forEach((id, index) => {
         if (index < idIndex) {
           preHeight =
@@ -76,7 +77,6 @@ export default {
           preHeight,
         behavior: "smooth"
       });
-      // this.$refs[`menuButton${menu.id}`].classList.add("active");
     }
   }
 };
