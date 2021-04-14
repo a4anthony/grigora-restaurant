@@ -1,9 +1,11 @@
 <template>
   <div class="page-nav" ref="pageNav" :class="slideDown && 'slide-down'">
     <body-container>
+      <!--left side-->
       <template v-slot:main>
         <menu-categories-nav />
       </template>
+      <!--right side-->
       <template v-slot:side>
         <cart only-header />
       </template>
@@ -54,10 +56,6 @@ export default {
 
 <style scoped>
 .page-nav {
-  /*position: sticky;*/
-  /*top: 0;*/
-  /*z-index: 10;*/
-
   position: sticky;
 }
 
@@ -74,21 +72,18 @@ export default {
   100% {
     top: 64px;
     z-index: 50;
-    -webkit-box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0px 7px 5px 0px rgba(0, 0, 0, 0.75);
   }
 }
-/*@-webkit-keyframes slide-down {*/
-/*  0% {*/
-/*    z-index: 100000000;*/
-/*    top: 0;*/
-/*  }*/
-/*  100% {*/
-/*    top: 100px;*/
-/*    z-index: 100000000;*/
-/*  }*/
-/*}*/
+@-webkit-keyframes slide-down {
+  0% {
+    z-index: 10;
+    top: -20px;
+  }
+  100% {
+    top: 64px;
+    z-index: 50;
+  }
+}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
