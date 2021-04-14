@@ -1,5 +1,6 @@
 <template>
   <div class="cart">
+    <!--cat header-->
     <div v-if="onlyHeader" class="cart-info d-flex items-center">
       <span class="mr-half">
         <inline-svg
@@ -9,12 +10,13 @@
       </span>
       Cart({{ data.total_cart_item }})
     </div>
+    <!--cart content-->
     <div v-if="!onlyHeader" class="cart-tab  text-center">
       <img
         class="d-block"
         src="../../assets/images/empty-cart.png"
         alt=""
-        width="200"
+        :width="200"
         style="margin: 0 auto 1rem auto"
       />
       <span class="d-block cart-text">Your cart is empty right now</span>
