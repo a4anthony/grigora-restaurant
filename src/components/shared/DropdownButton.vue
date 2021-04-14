@@ -6,21 +6,21 @@
     :id="`dropdownButton${id}`"
     @click="toggle"
   >
+    <!--button-->
     <button class=" w-100 dropdown-btn items-center">
-      <span v-if="label" class="">
+      <span v-if="label">
         {{ label }}
       </span>
-      <span v-else class="" style="display: inline-block; padding: 10px 30px">
+      <span v-else class="d-inline-block" style=" padding: 10px 30px">
         {{ activeMenu.category_name }}
       </span>
     </button>
+    <!--toggle icon-->
     <span class="toggle-icon d-flex items-center">
-      <!--<span :class="rotate ? 'rotate-toggle-icon' : ''">-->
       <fa
         :icon="['fas', 'chevron-down']"
         :class="rotate ? 'rotate-toggle-icon' : ''"
       />
-      <!--</span>-->
     </span>
     <click-animation background-color="#999" ref="showClickAnimation" />
   </div>
