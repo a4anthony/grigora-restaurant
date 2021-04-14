@@ -6,8 +6,6 @@
 </template>
 
 <script>
-import InlineSvg from "vue-inline-svgs";
-
 export default {
   name: "Logo",
   props: {
@@ -15,9 +13,6 @@ export default {
       type: Number,
       default: 55
     }
-  },
-  components: {
-    InlineSvg
   }
 };
 </script>
