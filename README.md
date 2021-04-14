@@ -1,6 +1,8 @@
-# grigora-restaurant
+# Grigora Restaurant
+ 
+####View project here: [https://a4anthony.github.io/grigora-restaurant/](https://a4anthony.github.io/grigora-restaurant/)
 
-## Project setup
+## Project setup 
 ```
 npm install
 ```
