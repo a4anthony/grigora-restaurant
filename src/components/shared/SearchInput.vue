@@ -1,18 +1,21 @@
 <template>
   <div class="search-form" :class="activeInput && 'active'">
+    <!--label-->
     <label
-      for="query"
+      :for="`query${id}`"
       :class="[activeLabel && 'active', activeInput && 'set-color']"
       >{{ placeholder }}</label
     >
+    <!--input -->
     <input
-      id="query"
+      :id="`query${id}`"
       type="text"
       class="w-100"
       v-model="searchQuery"
       @focusin="searchFocus"
       @focusout="searchFocus"
     />
+    <!--appended button-->
     <button v-if="!hideButton" class="search-btn">
       <span>
         <fa :icon="['fas', 'search']" />
@@ -22,6 +25,8 @@
 </template>
 
 <script>
+import uniqueId from "lodash.uniqueid";
+
 export default {
   name: "SearchInput",
   props: {
@@ -32,6 +37,11 @@ export default {
     placeholder: {
       type: String,
       default: ""
+    }
+  },
+  computed: {
+    id() {
+      return `__input__${uniqueId()}`;
     }
   },
   data() {
