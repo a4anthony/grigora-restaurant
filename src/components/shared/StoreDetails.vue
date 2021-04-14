@@ -1,15 +1,18 @@
 <template>
   <ul class="d-flex store-details">
+    <!--min order-->
     <li class="mr-1">
       <span class="d-block text-yellow store-details-info">Min. Order</span>
       <span class="store-details-info-value text-white">₦ 200</span>
     </li>
+    <!--prop time-->
     <li class="mr-1">
       <span class="d-block text-yellow store-details-info">Prep. Time</span>
       <span class="store-details-info-value text-white"
         >{{ data.estimated_preparing_time }} mins</span
       >
     </li>
+    <!--delivery fee-->
     <li>
       <span class="d-block text-yellow store-details-info">Delivery Fee</span>
       <span class="store-details-info-value text-white"
