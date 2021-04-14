@@ -18,10 +18,14 @@ export default {
 <style scoped>
 .menu-toggle {
   height: 43px;
-  background-color: red;
+  background-color: #fff;
   border-radius: 75%;
   font-size: 20px;
   width: 100%;
+  color: #666;
+}
+.menu-toggle:hover {
+  background-color: #efefef;
 }
 /* (1366x768) WXGA Display */
 
