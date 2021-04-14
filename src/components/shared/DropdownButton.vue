@@ -22,12 +22,15 @@
       />
       <!--</span>-->
     </span>
+    <click-animation background-color="#999" ref="showClickAnimation" />
   </div>
 </template>
 
 <script>
+import ClickAnimation from "@/components/shared/ClickAnimation";
 export default {
   name: "DropdownButton",
+  components: { ClickAnimation },
   props: {
     label: {
       type: String,
@@ -56,6 +59,7 @@ export default {
     toggle() {
       this.toggleIcon();
       this.$emit("toggle-dropdown");
+      this.$refs.showClickAnimation.toggleAnimation();
     },
     toggleIcon() {
       this.rotate = !this.rotate;
@@ -70,6 +74,7 @@ export default {
   height: 38px;
   border-radius: 28px;
   border: 2px solid red;
+  position: relative;
 }
 .dropdown-btn {
   border-radius: 28px 0 0 28px;

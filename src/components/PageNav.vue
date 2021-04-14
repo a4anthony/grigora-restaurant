@@ -21,6 +21,9 @@ export default {
   computed: {
     sideDrawerStatus() {
       return this.$store.state.sideDrawerStatus;
+    },
+    showLocationSearchModal() {
+      return this.$store.state.showLocationSearchModal;
     }
   },
   data() {
@@ -32,6 +35,9 @@ export default {
     onScroll() {
       const landerHeight = document.getElementById("lander").clientHeight;
       if (this.sideDrawerStatus) {
+        return;
+      }
+      if (this.showLocationSearchModal) {
         return;
       }
       this.slideDown = window.scrollY > landerHeight + 20;

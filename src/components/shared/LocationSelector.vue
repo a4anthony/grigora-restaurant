@@ -1,9 +1,12 @@
 <template>
   <div style="position:relative;">
     <button
+      v-for="screen in ['large', 'small']"
       :id="`dropdownButton${id}`"
-      @click="toggleDropdown"
-      class="nav-location-search-btn d-flex w-100 justify-center items-center"
+      :key="`${screen}ScreensButton`"
+      @click="toggleDropdown(screen)"
+      class="nav-location-search-btn d-flex w-100 justify-center items-center large-screens"
+      :class="`${screen}-screens`"
     >
       <span class="mr-1">
         <inline-svg
@@ -48,22 +51,22 @@ export default {
       return `location_dropdown__button__${uniqueId()}`;
     }
   },
-  mounted() {
-    this.toggleDropdown();
-    this.fixedWidth = document.getElementById(
-      "navLocationSelector"
-    ).offsetWidth;
-  },
+  mounted() {},
   data() {
     return {
       fixedWidth: 0
     };
   },
   methods: {
-    toggleDropdown() {
-      this.$store.commit("setShowLocationSearchModal");
+    toggleDropdown(screen) {
+      this.fixedWidth = document.getElementById(
+        "navLocationSelector"
+      ).offsetWidth;
       this.$refs.dropdownContent.toggleDropdown();
       this.$refs.showClickAnimation.toggleAnimation();
+      if (screen === "small") {
+        this.$store.commit("setShowLocationSearchModal");
+      }
     }
   }
 };
@@ -92,6 +95,9 @@ export default {
   color: #999;
   font-weight: 500;
 }
+.small-screens {
+  display: none;
+}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
@@ -113,6 +119,12 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .large-screens {
+    display: none;
+  }
+  .small-screens {
+    display: flex;
+  }
 }
 
 /* extra small mobile 320px. */
@@ -120,6 +132,12 @@ export default {
 @media (max-width: 575px) {
   .nav-location-search-btn {
     font-size: 0.9rem;
+  }
+  .large-screens {
+    display: none;
+  }
+  .small-screens {
+    display: flex;
   }
 }
 
