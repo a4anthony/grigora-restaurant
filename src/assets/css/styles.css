@@ -40,9 +40,6 @@ button:hover {
   a:hover {
     background-color: inherit !important;
   }
-  button:hover {
-    background-color: inherit !important;
-  }
 }
 
 /*---------------------------------------------------------
