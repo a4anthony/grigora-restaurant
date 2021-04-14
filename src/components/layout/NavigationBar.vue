@@ -4,7 +4,7 @@
     <div class="d-flex items-center w-25 nav-left-tab">
       <!--logo-->
       <div class="mr-1">
-        <logo />
+        <logo :size="50" />
       </div>
       <!--location dropdown selector-->
       <div
@@ -77,7 +77,7 @@ export default {
   top: 0;
   background-color: #fff;
   z-index: 100;
-  height: 65px;
+  height: 60px;
   -webkit-box-shadow: 0 2px 10px 0px rgb(0 0 0 / 10%);
   -moz-box-shadow: 0 2px 10px 0px rgb(0 0 0 / 10%);
   box-shadow: 0 2px 10px 0px rgb(0 0 0 / 10%);

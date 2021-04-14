@@ -55,7 +55,7 @@ export default {
 }
 .cart-info {
   width: 100%;
-  height: 41px;
+  height: 35px;
   margin-top: 12px;
   margin-bottom: 12px;
   padding-left: 1rem;
@@ -63,6 +63,7 @@ export default {
   background-color: #fbfbfc;
   font-weight: 700;
   color: #333;
+  font-size: 0.85rem;
 }
 .cart-tab {
   background-color: #fbfbfc;

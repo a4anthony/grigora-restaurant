@@ -37,18 +37,18 @@ export default {
 
 <style scoped>
 .store-details {
-  margin: 10px 0 16px 0;
+  margin: 0 0 16px 0;
 }
 .store-details-info {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 12px;
   text-transform: capitalize;
   margin-bottom: 0.6rem;
 }
 .store-details-info-value {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 /* (1366x768) WXGA Display */
 

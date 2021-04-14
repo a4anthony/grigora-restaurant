@@ -1,6 +1,6 @@
 <template>
   <div
-    class="d-inline-flex flex-wrap justify-between flex-column centered-sm centered-md"
+    class="menu-selector d-inline-flex flex-wrap justify-between flex-column centered-sm centered-md"
   >
     <span class=" text-yellow text-center menu-select-text">Chose a Menu</span>
     <dropdown
@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .menu-select-text {
   font-weight: 400;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 /* (1366x768) WXGA Display */
 
@@ -58,11 +58,17 @@ export default {
 /* small mobile :576px. */
 
 @media (min-width: 576px) and (max-width: 767px) {
+  .menu-selector {
+    margin-top: 1rem;
+  }
 }
 
 /* extra small mobile 320px. */
 
 @media (max-width: 575px) {
+  .menu-selector {
+    margin-top: 1rem;
+  }
 }
 
 /* Large Mobile :480px. */

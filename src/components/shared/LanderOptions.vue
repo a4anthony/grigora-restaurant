@@ -93,7 +93,7 @@ export default {
   background-color: rgba(238, 236, 236, 0.3);
 }
 .lander-options {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .lander-options ul {
   margin: 0;
@@ -126,7 +126,6 @@ export default {
 
 @media (min-width: 576px) and (max-width: 767px) {
   .lander-options {
-    margin-bottom: 1rem;
   }
 }
 
@@ -149,7 +148,6 @@ export default {
     justify-content: unset;
   }
   .lander-options {
-    margin-bottom: 1rem;
   }
   .transparent-btn {
   }

@@ -70,7 +70,7 @@ export default {
     top: -20px;
   }
   100% {
-    top: 64px;
+    top: 59px;
     z-index: 50;
   }
 }
@@ -80,7 +80,7 @@ export default {
     top: -20px;
   }
   100% {
-    top: 64px;
+    top: 59px;
     z-index: 50;
   }
 }

@@ -71,7 +71,7 @@
         class="d-flex justify-between flex-wrap centered-sm centered-md store-details-options"
       >
         <!--store details-->
-        <div class="mb-1 centered-sm centered-md lander-store-details">
+        <div class=" centered-sm centered-md lander-store-details">
           <store-details />
         </div>
         <!--lander options-->
@@ -174,10 +174,11 @@ export default {
   border-top: 1px solid hsla(0, 0%, 100%, 0.4);
 }
 .store-details-options {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .restaurant-cuisines {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  margin-top: 3px;
 }
 ul {
   margin: 0;
@@ -200,13 +201,13 @@ ul.dots-after li:last-child:after {
   text-align: center;
 }
 .lander {
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 3rem 1.5rem;
 }
 
 .store-status {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
   height: 35px;
   padding-top: 0.2rem;
 }
@@ -221,7 +222,7 @@ ul.dots-after li:last-child:after {
 }
 .reviews-btn,
 .more-info-btn {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #ffff;
   background-color: transparent;
   border-radius: 5px;

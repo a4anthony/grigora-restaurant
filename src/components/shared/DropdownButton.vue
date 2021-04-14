@@ -94,6 +94,7 @@ export default {
   color: #e39419;
   background-color: transparent;
   padding: 0 4rem;
+  font-weight: 700;
   text-align: center;
 }
 

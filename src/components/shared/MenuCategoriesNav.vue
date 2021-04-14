@@ -86,10 +86,10 @@ export default {
 .menu-categories {
 }
 .menu-categories button {
-  height: 65px;
+  height: 55px;
   padding: 0 2rem;
   position: relative;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #333;
 }

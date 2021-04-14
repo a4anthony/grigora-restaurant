@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="d-flex sign-in-sign-up-link items-center justify-center">
+  <button class="d-flex sign-in-sign-up-link items-center justify-center w-100">
     <span class="mr-half">
       <inline-svg
         :size="15"
@@ -7,7 +7,7 @@
       />
     </span>
     Sign In/Sign Up
-  </a>
+  </button>
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .sign-in-sign-up-link {
   background: #ca3114;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   box-shadow: 0 15px 30px -10px rgba(202 49 20 / 60%);
   border: 0;
@@ -27,7 +27,12 @@ export default {
   transition: background 0.7s ease;
   border-radius: 5px;
   text-decoration: none;
-  height: 43px;
+  height: 40px;
+}
+@media (hover: none) {
+  a.sign-in-sign-up-link:hover {
+    background-color: initial !important;
+  }
 }
 /* (1366x768) WXGA Display */
 

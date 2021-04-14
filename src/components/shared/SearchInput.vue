@@ -73,8 +73,8 @@ export default {
   transition: all 0.5s ease;
   position: absolute;
   left: 10px;
-  top: 14px;
-  font-size: 0.9rem;
+  top: 12px;
+  font-size: 0.85rem;
   color: #656363;
 }
 .search-form label:hover {
@@ -91,10 +91,10 @@ export default {
   color: #e39419;
 }
 .search-form input {
-  height: 43px;
+  height: 40px;
   background-color: #fff;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 13px;
   padding: 14px 60px 2px 10px;
   line-height: 24px;
   border: 1px solid #969594;
@@ -116,11 +116,11 @@ export default {
 .search-btn {
   background-color: #fff;
   position: absolute;
-  right: 2px;
+  right: 4px;
   /*width: 40px;*/
-  height: 39px;
-  top: 2px;
-  font-size: 20px;
+  height: 32px;
+  top: 4px;
+  font-size: 14px;
   padding: 0 0.8rem;
 }
 /* (1366x768) WXGA Display */

@@ -13,7 +13,7 @@
           </span>
           <span class="d-flex flex-column">
             <span class="text d-block">{{ info.text }}</span>
-            <span class="icon d-block">{{ info.info }}</span>
+            <span class="info d-block">{{ info.info }}</span>
           </span>
         </li>
       </ul>
@@ -70,14 +70,14 @@ export default {
 
 <style scoped>
 .more-info-modal .text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.0125em;
   margin-bottom: 5px;
   color: #212121 !important;
 }
 .more-info-modal .info {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.0125em;
   color: #212121 !important;

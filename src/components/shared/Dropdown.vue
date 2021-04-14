@@ -215,7 +215,7 @@ export default {
           }
           // set fixed top position
           if (that.fixedWidth) {
-            dropdownContent.style.top = `-${15}px`;
+            dropdownContent.style.top = `-${5}px`;
           }
           // stick dropdown to top
           if (dropdown.getBoundingClientRect().top < 20) {

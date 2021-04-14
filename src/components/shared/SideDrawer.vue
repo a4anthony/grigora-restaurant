@@ -28,7 +28,7 @@
           >
             <span class="mr-2">
               <inline-svg
-                :size="link.classes.includes('small-link') ? 16 : 25"
+                :size="link.classes.includes('small-link') ? 14 : 25"
                 :path="link.iconPath"
             /></span>
             {{ link.text }}
@@ -167,7 +167,7 @@ export default {
   background-color: #fff;
   padding: 20px;
   border-radius: 60px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #212121;
 }
@@ -182,7 +182,7 @@ export default {
   min-height: 48px;
   padding: 8px 16px;
   border-radius: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #616161;
   font-weight: 700;
 }

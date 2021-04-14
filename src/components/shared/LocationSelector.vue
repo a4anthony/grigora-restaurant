@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
 .nav-location-search-btn {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   height: 40px;
   color: #212121;
