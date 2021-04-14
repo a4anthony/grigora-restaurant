@@ -4,6 +4,7 @@
     class="modal d-flex justify-center items-center"
     :class="[show ? 'visible' : 'hidden', classes]"
   >
+    <!--modal backdrop-->
     <div
       @click="
         backdropClose
@@ -12,6 +13,7 @@
       "
       class="overlay"
     ></div>
+    <!--modal content-->
     <div :ref="`${reference}Content`" class="modal-content">
       <!--close button-->
       <div
@@ -25,6 +27,7 @@
           &times;
         </button>
       </div>
+      <!--content-->
       <slot></slot>
     </div>
   </div>
@@ -59,9 +62,7 @@ export default {
       required: ""
     }
   },
-  mounted() {
-    console.log(this.$refs);
-  },
+  mounted() {},
   watch: {
     backdropShake(val) {
       const that = this;
@@ -91,8 +92,7 @@ export default {
   },
   data() {
     return {
-      backdropShake: false,
-      infos: []
+      backdropShake: false
     };
   }
 };
