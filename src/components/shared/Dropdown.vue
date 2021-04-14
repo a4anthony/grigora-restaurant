@@ -199,7 +199,7 @@ export default {
             dropdownContent.style.right = 0;
             dropdownContent.style.top = `-${dropdownContent.clientHeight +
               10}px`;
-            console.log("exceeds");
+            // console.log("exceeds");
           }
           // place dropdown below
           if (
@@ -211,7 +211,7 @@ export default {
             dropdownContent.style.right = 0;
             dropdownContent.style.left = 0;
             dropdownContent.style.top = `${45}px`;
-            console.log("does not exceed");
+            // console.log("does not exceed");
           }
           // set fixed top position
           if (that.fixedWidth) {
@@ -231,7 +231,7 @@ export default {
               dropdownContent.style.right = `${rightSpace}px`;
               dropdownContent.style.top = 0;
             }
-            console.log("at top");
+            // console.log("at top");
           }
 
           that.checking = false;
