@@ -67,11 +67,10 @@ export default {
       fixedWidth: 0
     };
   },
-  mounted() {
-    this.fixedWidth = this.$refs[`dropdownButton${this.id}`].$el.offsetWidth;
-  },
+  mounted() {},
   methods: {
     toggleDropdown() {
+      this.fixedWidth = this.$refs[`dropdownButton${this.id}`].$el.offsetWidth;
       this.$refs.dropdownContent.toggleDropdown();
     }
   }
