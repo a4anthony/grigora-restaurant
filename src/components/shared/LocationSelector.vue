@@ -74,7 +74,6 @@ export default {
 
 <style scoped>
 .nav-location-search-btn {
-  /*padding: 0.7rem 3.5rem;*/
   font-size: 1rem;
   font-weight: 700;
   height: 40px;
