@@ -7,7 +7,11 @@
         <logo />
       </div>
       <!--location dropdown selector-->
-      <div class="mr-1 nav-location-selector flex-grow">
+      <div
+        id="navLocationSelector"
+        class="mr-1 nav-location-selector flex-grow"
+        style="position:relative;"
+      >
         <location-selector />
       </div>
       <div class="nav-navbar-toggle-sm">
@@ -18,7 +22,7 @@
     <div class="d-flex items-center flex-grow nav-right-tab">
       <!--search input-->
       <div class="mr-1 flex-grow nav-search-input">
-        <search-input />
+        <search-input placeholder="Search for vendors and cuisines" />
       </div>
       <!--auth link-->
       <div class="mr-1 nav-auth-link">
@@ -60,7 +64,7 @@ export default {
   },
   data() {
     return {
-      sideDrawerOpen: true
+      sideDrawerOpen: false
     };
   }
 };
@@ -82,7 +86,7 @@ export default {
   width: 40%;
 }
 .nav-location-selector {
-  margin-right: 25%;
+  padding-right: 25%;
 }
 .nav-navbar-toggle-sm {
   display: none;
@@ -130,7 +134,7 @@ export default {
     justify-content: flex-end;
   }
   .nav-location-selector {
-    margin: 0 10%;
+    padding: 0 10% 0 0;
   }
 }
 
@@ -149,7 +153,7 @@ export default {
     display: block;
   }
   .nav-location-selector {
-    margin: 0 10%;
+    padding: 0 10%;
   }
 }
 
@@ -175,7 +179,7 @@ export default {
     display: none;
   }
   .nav-location-selector {
-    margin-right: 1rem;
+    padding-right: 0;
   }
   .nav-navbar-toggle-sm {
     width: 20%;

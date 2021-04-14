@@ -4,7 +4,9 @@ export default createStore({
   state: {
     activeMenu: "",
     activeSubMenu: "",
-    sideDrawerStatus: null
+    sideDrawerStatus: null,
+    showMoreInfoModal: false,
+    showLocationSearchModal: false
   },
   mutations: {
     setActiveMenu(state, data) {
@@ -18,6 +20,12 @@ export default createStore({
     },
     setSideDrawerStatus(state, data) {
       state.sideDrawerStatus = data;
+    },
+    setShowMoreInfoModal(state) {
+      state.showMoreInfoModal = !state.showMoreInfoModal;
+    },
+    setShowLocationSearchModal(state) {
+      state.showLocationSearchModal = !state.showLocationSearchModal;
     }
   },
   actions: {},

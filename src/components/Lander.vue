@@ -50,7 +50,10 @@
             >
           </li>
           <li class="d-flex items-center">
-            <button class="more-info-btn d-flex items-center">
+            <button
+              @click="$store.commit('setShowMoreInfoModal')"
+              class="more-info-btn d-flex items-center"
+            >
               <span class="mr-half">
                 <inline-svg
                   :size="19"
@@ -124,6 +127,11 @@ export default {
           this.toMins(time) < this.toMins(closingTime))
       );
     }
+  },
+  data() {
+    return {
+      showMoreInfoModal: false
+    };
   },
   mounted() {},
   methods: {

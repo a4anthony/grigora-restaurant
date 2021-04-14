@@ -1,23 +1,71 @@
 <template>
-  <button
-    class="nav-location-search-btn d-flex w-100 justify-center items-center"
-  >
-    <span class="mr-1">
-      <inline-svg
-        :size="20"
-        :path="require(`!html-loader!../../assets/svgs/placeholder.svg`)"
-      />
-    </span>
-    Wuse 2, Abuja
-    <span class="ml-1 toggle-icon">
-      <fa :icon="['fas', 'chevron-down']" />
-    </span>
-  </button>
+  <div style="position:relative;">
+    <button
+      :id="`dropdownButton${id}`"
+      @click="toggleDropdown"
+      class="nav-location-search-btn d-flex w-100 justify-center items-center"
+    >
+      <span class="mr-1">
+        <inline-svg
+          :size="20"
+          :path="require(`!html-loader!../../assets/svgs/placeholder.svg`)"
+        />
+      </span>
+      Wuse 2, Abuja
+      <span class="ml-1 toggle-icon">
+        <fa :icon="['fas', 'chevron-down']" />
+      </span>
+    </button>
+    <click-animation background-color="#999" ref="showClickAnimation" />
+    <dropdown
+      label="Location Search"
+      dropdown-classes="location-search-dropdown"
+      adjust
+      set-fixed
+      ref="dropdownContent"
+      content-only
+      :ext-button-id="id"
+      use-slot
+      :fixed-width="fixedWidth"
+    >
+      <template v-slot:content>
+        <location-search />
+      </template>
+    </dropdown>
+  </div>
 </template>
 
 <script>
+import Dropdown from "@/components/shared/Dropdown";
+import uniqueId from "lodash.uniqueid";
+import ClickAnimation from "@/components/shared/ClickAnimation";
+import LocationSearch from "@/components/shared/LocationSearch";
 export default {
-  name: "LocationSelector"
+  name: "LocationSelector",
+  components: { LocationSearch, ClickAnimation, Dropdown },
+  computed: {
+    id() {
+      return `location_dropdown__button__${uniqueId()}`;
+    }
+  },
+  mounted() {
+    this.toggleDropdown();
+    this.fixedWidth = document.getElementById(
+      "navLocationSelector"
+    ).offsetWidth;
+  },
+  data() {
+    return {
+      fixedWidth: 0
+    };
+  },
+  methods: {
+    toggleDropdown() {
+      this.$store.commit("setShowLocationSearchModal");
+      this.$refs.dropdownContent.toggleDropdown();
+      this.$refs.showClickAnimation.toggleAnimation();
+    }
+  }
 };
 </script>
 

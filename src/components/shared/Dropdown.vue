@@ -20,16 +20,22 @@
       :ref="`dropdownContent${id}`"
       :style="styles"
     >
-      <button
-        v-for="(option, index) in options"
-        class="d-block w-100 text-left"
-        @click="setActiveMenu(option)"
-        :key="`dropdownOption${index}`"
-      >
-        <span class="d-block">
-          <slot name="option" :item="option"> </slot>
-        </span>
-      </button>
+      <div v-if="!useSlot">
+        <button
+          v-for="(option, index) in options"
+          class="d-block w-100 text-left"
+          @click="setActiveMenu(option)"
+          :key="`dropdownOption${index}`"
+        >
+          <span class="d-block">
+            <slot name="option" :item="option"> </slot>
+          </span>
+        </button>
+      </div>
+
+      <div v-else>
+        <slot name="content"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +49,7 @@ export default {
   props: {
     options: {
       type: Array,
-      required: true
+      default: () => []
     },
     label: {
       type: String,
@@ -76,6 +82,10 @@ export default {
     fixedWidth: {
       type: Number,
       default: null
+    },
+    useSlot: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -104,7 +114,9 @@ export default {
     };
   },
   mounted() {
-    this.selectedOption = this.options[0];
+    if (!this.useSlot) {
+      this.selectedOption = this.options[0];
+    }
     if (!this.label) {
       this.$store.commit("setActiveMenu", this.options[0]);
     }
@@ -187,7 +199,7 @@ export default {
             dropdownContent.style.right = 0;
             dropdownContent.style.top = `-${dropdownContent.clientHeight +
               10}px`;
-            // console.log("exceeds");
+            console.log("exceeds");
           }
           // place dropdown below
           if (
@@ -199,7 +211,7 @@ export default {
             dropdownContent.style.right = 0;
             dropdownContent.style.left = 0;
             dropdownContent.style.top = `${45}px`;
-            // console.log("does not exceed");
+            console.log("does not exceed");
           }
           // set fixed top position
           if (that.fixedWidth) {
@@ -219,7 +231,7 @@ export default {
               dropdownContent.style.right = `${rightSpace}px`;
               dropdownContent.style.top = 0;
             }
-            // console.log("at top");
+            console.log("at top");
           }
 
           that.checking = false;
@@ -282,7 +294,10 @@ export default {
 .dropdown.stores .dropdown-content {
   /*top: 45px;*/
 }
-
+.dropdown.location-search-dropdown .dropdown-content {
+  top: 14px !important;
+  /*right: -25% !important;*/
+}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
@@ -314,6 +329,9 @@ export default {
   .delivery-dropdown .dropdown-content {
     left: 0 !important;
   }
+  .dropdown.location-search-dropdown .dropdown-content {
+    /*right: -10% !important;*/
+  }
 }
 
 /* small mobile :576px. */
@@ -331,6 +349,9 @@ export default {
   .delivery-dropdown .dropdown-content {
     left: 0 !important;
   }
+  .dropdown.location-search-dropdown {
+    display: none !important;
+  }
 }
 
 /* extra small mobile 320px. */
@@ -347,6 +368,9 @@ export default {
   }
   .delivery-dropdown .dropdown-content {
     left: 0 !important;
+  }
+  .dropdown.location-search-dropdown {
+    display: none !important;
   }
 }
 

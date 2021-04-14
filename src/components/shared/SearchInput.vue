@@ -3,7 +3,7 @@
     <label
       for="query"
       :class="[activeLabel && 'active', activeInput && 'set-color']"
-      >Search for vendors and cuisines</label
+      >{{ placeholder }}</label
     >
     <input
       id="query"
@@ -13,7 +13,7 @@
       @focusin="searchFocus"
       @focusout="searchFocus"
     />
-    <button class="search-btn">
+    <button v-if="!hideButton" class="search-btn">
       <span>
         <fa :icon="['fas', 'search']" />
       </span>
@@ -24,6 +24,16 @@
 <script>
 export default {
   name: "SearchInput",
+  props: {
+    hideButton: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: {
+      type: String,
+      default: ""
+    }
+  },
   data() {
     return {
       activeLabel: false,

@@ -283,6 +283,15 @@ a.large-link.about svg path {
   stroke-width: 10px;
   stroke: #212121;
 }
+.more-info-modal svg path {
+  stroke-width: 20px;
+  stroke: #e39419;
+  fill: #e39419 !important;
+}
+.location-search-btn svg path {
+  stroke: #e39419;
+  fill: #e39419 !important;
+}
 a {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

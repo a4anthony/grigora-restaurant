@@ -16,6 +16,8 @@
       </template>
     </body-container>
     <footer-bar />
+    <more-info-modal />
+    <location-search-modal />
   </div>
 </template>
 
@@ -30,9 +32,13 @@ import ItemCards from "@/components/ItemCards";
 import FooterBar from "@/components/layout/FooterBar";
 import PageNav from "@/components/PageNav";
 import BodyContainer from "@/components/BodyContainer";
+import MoreInfoModal from "@/components/shared/MoreInfoModal";
+import LocationSearchModal from "@/components/shared/LocationSearchModal";
 export default {
   name: "App",
   components: {
+    LocationSearchModal,
+    MoreInfoModal,
     BodyContainer,
     PageNav,
     FooterBar,
