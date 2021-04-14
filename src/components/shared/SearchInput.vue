@@ -63,6 +63,66 @@ export default {
 </script>
 
 <style scoped>
+.search-form {
+  position: relative;
+}
+.search-form:hover {
+  cursor: text;
+}
+.search-form label {
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  font-size: 0.9rem;
+  color: #656363;
+}
+.search-form label:hover {
+  cursor: text;
+}
+.search-form label.active {
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 10px;
+  font-size: 10px;
+  top: 6px;
+}
+.search-form label.set-color {
+  color: #e39419;
+}
+.search-form input {
+  height: 43px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 14px 60px 2px 10px;
+  line-height: 24px;
+  border: 1px solid #969594;
+}
+.search-form.active::before {
+  transition: all 0.5s ease;
+  position: absolute;
+  border: 3px solid #e39419;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  content: "";
+  border-radius: 5px;
+}
+
+.search-form input:focus {
+}
+.search-btn {
+  background-color: #fff;
+  position: absolute;
+  right: 2px;
+  /*width: 40px;*/
+  height: 39px;
+  top: 2px;
+  font-size: 20px;
+  padding: 0 0.8rem;
+}
 /* (1366x768) WXGA Display */
 
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
