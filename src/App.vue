@@ -64,20 +64,10 @@ export default {
 </script>
 
 <style>
-#app {
-  /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-  /*text-align: center;*/
-  /*color: #2c3e50;*/
-  /*margin-top: 60px;*/
-}
 .main-container {
   padding: 5px 85px 40px 85px;
 }
-.side-content {
-  /*background-color: #fbfbfc;*/
-}
+
 @media screen and (min-width: 1366px) and (max-width: 1919px) {
 }
 
@@ -92,10 +82,6 @@ export default {
 /* Normal desktop :991px. */
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .side-content {
-    display: none;
-  }
-
   .main-container {
     padding: 5px 50px 50px 50px;
   }
